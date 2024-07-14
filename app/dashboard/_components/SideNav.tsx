@@ -35,7 +35,7 @@ function SideNav() {
   }, []);
 
   return (
-    <div className="h-screen p-5 shadow-sm border">
+    <div className="h-screen p-5 shadow-sm border bg-white">
       <div className="flex justify-center">
         <div className="flex justify-center  animate-spin-slow ">
           <Image src={"/logo.svg"} alt="logo" width={40} height={40} />
