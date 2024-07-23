@@ -1,8 +1,10 @@
 "use client";
 
 import Header from "@/components/Header";
+import GridPattern from "@/components/magicui/grid-pattern";
 import { OrbitingCirclesDemo } from "@/components/OrbitingCirclesDemo";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -18,12 +20,14 @@ export default function Home() {
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
               AI Content <span className="text-primary">Generator</span>{" "}
+              
             </h1>
             <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Boost your content creation with our AI Platform , providing engaging and top-quality text instantly.
+              Boost your content creation with our AI Platform , providing
+              engaging and top-quality text instantly.
             </p>
             <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-            <Link href="/dashboard" legacyBehavior>
+              <Link href="/dashboard" legacyBehavior>
                 <a className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-primary focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                   Get Started
                   <svg
@@ -42,10 +46,19 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="flex items-center justify-center h-screen" >
-      <OrbitingCirclesDemo/>
-      </div>
-        
+          <div className="flex items-center justify-center h-screen">
+            <OrbitingCirclesDemo />
+          </div>
+          <GridPattern
+              width={30}
+              height={30}
+              x={-1}
+              y={-1}
+              strokeDasharray={"4 2"}
+              className={cn(
+                "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
+              )}
+            />
         </section>
       </div>
     </div>
