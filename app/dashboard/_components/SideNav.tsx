@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import UsageTrack from "./UsageTrack";
+import Link from "next/link";
 
 function SideNav() {
   const MenuList = [
@@ -43,13 +44,15 @@ function SideNav() {
 
   return (
     <div className="h-screen relative p-5 shadow-sm border bg-white">
-      <div className="flex justify-center">
-        <div className="flex justify-center  animate-spin-slow ">
+      <div className="flex justify-center ">
+      <div className="flex justify-center  animate-spin-slow ">
           <Image src={"/logo.svg"} alt="logo" width={40} height={40} />
         </div>
+        <Link href="/">
         <div className="ml-4 flex justify-center">
           <h1 className="flex text-4xl">AI-Gen</h1>
         </div>
+        </Link>
       </div>
 
       <hr className="my-5 border" />
