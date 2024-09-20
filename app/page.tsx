@@ -1,6 +1,7 @@
 "use client";
 
 import Header from "@/components/Header";
+import { HeroVideoDialogDemo } from "@/components/HeroVideoDialogDemo";
 import GridPattern from "@/components/magicui/grid-pattern";
 import { OrbitingCirclesDemo } from "@/components/OrbitingCirclesDemo";
 import { Button } from "@/components/ui/button";
@@ -20,7 +21,6 @@ export default function Home() {
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
               AI Content <span className="text-primary">Generator</span>{" "}
-              
             </h1>
             <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
               Boost your content creation with our AI Platform , providing
@@ -46,19 +46,28 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="flex items-center justify-center h-screen">
-            <OrbitingCirclesDemo />
+          <div className="flex flex-col items-center justify-center h-screen p-8">
+            <div>
+            <h1 className="mb-4 text-4xl pb-4 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+              DEMO <span className="text-primary">Video</span>{" "}
+            </h1>
+            </div>
+            <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
+              {/* HeroVideoDialogDemo will be centered within this box */}
+              <HeroVideoDialogDemo />
+            </div>
           </div>
+
           <GridPattern
-              width={30}
-              height={30}
-              x={-1}
-              y={-1}
-              strokeDasharray={"4 2"}
-              className={cn(
-                "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
-              )}
-            />
+            width={30}
+            height={30}
+            x={-1}
+            y={-1}
+            strokeDasharray={"4 2"}
+            className={cn(
+              "[mask-image:radial-gradient(300px_circle_at_center,white,transparent)]"
+            )}
+          />
         </section>
       </div>
     </div>
