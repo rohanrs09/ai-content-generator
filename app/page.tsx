@@ -5,6 +5,7 @@ import { HeroVideoDialogDemo } from "@/components/HeroVideoDialogDemo";
 import GridPattern from "@/components/magicui/grid-pattern";
 import { OrbitingCirclesDemo } from "@/components/OrbitingCirclesDemo";
 import { Button } from "@/components/ui/button";
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,15 +14,35 @@ import { useRouter } from "next/navigation";
 export default function Home() {
   const router = useRouter();
 
+  const words = [
+    {
+      text: "AI",
+      className: "mb-4 text-4xl font-extrabold md:text-5xl lg:text-6xl",
+    },
+    {
+      text: "Content",
+      className: "mb-4 text-4xl font-extrabold md:text-5xl lg:text-6xl",
+    },
+
+    {
+      text: "Generator.",
+      className:
+        "mb-4 text-4xl font-extrabold md:text-5xl lg:text-6xl text-primary dark:text-blue-500",
+    },
+  ];
+
   return (
     <div>
       <Header />
       <div>
         <section className=" z-50">
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-            <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-              AI Content <span className="text-primary">Generator</span>{" "}
-            </h1>
+            <div className="flex justify-center items-center">
+              <TypewriterEffectSmooth
+                className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center"
+                words={words}
+              />
+            </div>
             <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
               Boost your content creation with our AI Platform , providing
               engaging and top-quality text instantly.
@@ -45,12 +66,13 @@ export default function Home() {
                 </a>
               </Link>
             </div>
+            
           </div>
           <div className="flex flex-col items-center justify-center h-screen p-8">
             <div>
-            <h1 className="mb-4 text-4xl pb-4 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-              DEMO <span className="text-primary">Video</span>{" "}
-            </h1>
+              <h1 className="mb-4 text-4xl pb-4 font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                DEMO <span className="text-primary">Video</span>{" "}
+              </h1>
             </div>
             <div className="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
               {/* HeroVideoDialogDemo will be centered within this box */}
