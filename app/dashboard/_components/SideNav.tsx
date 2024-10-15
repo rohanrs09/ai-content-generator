@@ -1,6 +1,6 @@
 "use client";
 
-import { FileClock, Home, Settings, WalletCards } from "lucide-react";
+import { FileClock, Home, Settings, WalletCards, ImageIcon  } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
@@ -13,6 +13,11 @@ function SideNav() {
       name: "Home",
       icon: Home,
       path: "/dashboard",
+    },
+    {
+      name:"Text Behind Image",
+      icon:ImageIcon,
+      path:"/dashboard/textbehindimage",
     },
     {
       name: "History",
