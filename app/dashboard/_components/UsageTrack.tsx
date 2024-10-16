@@ -51,11 +51,11 @@ useEffect(()=>{
           <div
             className="h-2 bg-white rounded-full "
             style={{
-              width: (totalUsage/10000)*100+"%",
+              width: (totalUsage/100000)*100+"%",
             }}
           ></div>
         </div>
-        <h2 className="text-sm my-2">{totalUsage}/10,000 Credit Used</h2>
+        <h2 className="text-sm my-2">{totalUsage}/100,000 Credit Used</h2>
       </div>
       <Button variant={"secondary"} className="w-full my-3 text-primary">
         Upgrade
