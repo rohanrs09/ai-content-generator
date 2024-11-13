@@ -14,11 +14,11 @@ function SideNav() {
       icon: Home,
       path: "/dashboard",
     },
-    {
-      name:"Text Behind Image",
-      icon:ImageIcon,
-      path:"/dashboard/textbehindimage",
-    },
+    // {
+    //   name:"Text Behind Image",
+    //   icon:ImageIcon,
+    //   path:"/dashboard/textbehindimage",
+    // },
     {
       name: "History",
       icon: FileClock,
