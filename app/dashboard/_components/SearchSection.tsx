@@ -1,7 +1,6 @@
 import { Search } from 'lucide-react'
 import React from 'react'
 import SparklesText from '../../../components/magicui/SparklesText'
-import { PlaceholdersAndVanishInputDemo } from '@/components/PlaceholdersAndVanishInputDemo'
 
 function SearchSection({onSearchInput}:any){
   return (
