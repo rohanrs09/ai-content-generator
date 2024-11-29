@@ -16,11 +16,12 @@ function Header() {
           <h1 className="flex text-4xl">AI-Gen</h1>
         </div>
       </div>
-      <div className="flex gap-2 items-center">
+      //  dont show for a render sigin error
+      {/* <div className="flex gap-2 items-center">
         <Link href="/auth/sign-in">
           <Button>Get Started</Button>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }
