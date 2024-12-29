@@ -6,10 +6,10 @@ import { Check,Star } from 'lucide-react'
 
 function billing() {
   return (
-    <section className="w-full py-12 lg:py-24 bg-gradient-to-b from-gray-50 to-white min-h-screen flex items-center">
+    <section className="w-full py-4 lg:py-8  min-h-screen flex items-center">
       <div className="container px-4 md:px-6 mx-auto">
-        <div className="text-center space-y-4 mb-12 md:mb-20">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight opacity-0 animate-fade-in">
+        <div className="text-center space-y-4 mb-4 md:mb-6">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight opacity-0 animate-fade-in">
             Upgrade With <span className="text-primary">Monthly Plan</span>
           </h1>
           <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
@@ -17,85 +17,83 @@ function billing() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Free Plan */}
-          <div className="opacity-0 animate-slide-in-left">
-            <Card className="relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300  group">
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-              <CardHeader className="text-center pb-8 pt-6 relative">
-                <CardTitle>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">Free</h3>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-5xl md:text-6xl font-extrabold">0</span>
-                    <span className="text-3xl md:text-4xl font-extrabold">$</span>
-                    <span className="ml-2 text-gray-500 text-lg">/month</span>
-                  </div>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pb-8 relative">
-                <ul className="space-y-4 md:space-y-6">
-                  {[
-                    "10,000 Words/Month",
-                    "25+ Content Templates",
-                    "Unlimited Download & Copy",
-                    "1 Month of History"
-                  ].map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-3 text-sm md:text-base">
-                      <Check className="h-5 w-5 text-primary shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+        <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+    {/* Free Plan */}
+    <div className="w-full max-w-md mx-auto">
+      <Card className="relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 group h-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        <CardHeader className="text-center pb-8 pt-6 relative">
+          <CardTitle>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-2">Free</h3>
+            <div className="flex items-baseline justify-center">
+              <span className="text-4xl sm:text-5xl font-extrabold">0</span>
+              <span className="text-2xl sm:text-3xl font-extrabold">$</span>
+              <span className="ml-2 text-gray-500 text-base sm:text-lg">/month</span>
+            </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pb-8 relative">
+          <ul className="space-y-4">
+            {[
+              "10,000 Words/Month",
+              "25+ Content Templates",
+              "Unlimited Download & Copy",
+              "1 Month of History"
+            ].map((feature, index) => (
+              <li key={index} className="flex items-center space-x-3 text-sm sm:text-base">
+                <Check className="h-5 w-5 text-primary shrink-0" />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
 
-          {/* Monthly Plan */}
-          <div className="opacity-0 animate-slide-in-right">
-            <Card className="relative overflow-hidden border-2 border-primary shadow-lg shadow-primary/10 h-full group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-              {/* <div className="absolute top-4 right-4">
-                <Star className="h-6 w-6 text-primary fill-primary" />
-              </div> */}
-              <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm rounded-bl-lg">
-                Popular
-              </div>
-              <CardHeader className="text-center pb-8 pt-6 relative">
-                <CardTitle>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-2">Monthly</h3>
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-5xl md:text-6xl font-extrabold">9.99</span>
-                    <span className="text-3xl md:text-4xl font-extrabold">$</span>
-                    <span className="ml-2 text-gray-500 text-lg">/month</span>
-                  </div>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pb-8 relative">
-                <ul className="space-y-4 md:space-y-6">
-                  {[
-                    "1,00,000 Words/Month",
-                    "50+ Template Access",
-                    "Unlimited Download & Copy",
-                    "1 Year of History"
-                  ].map((feature, index) => (
-                    <li key={index} className="flex items-center space-x-3 text-sm md:text-base">
-                      <div className="rounded-full bg-primary/10 p-1">
-                        <Check className="h-4 w-4 text-primary shrink-0" />
-                      </div>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button 
-                  className="w-full ml-4 mr-4 mt-8 bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-300"
-                  size="lg"
-                >
-                  Get Started
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+    {/* Monthly Plan */}
+    <div className="w-full max-w-md mx-auto">
+      <Card className="relative overflow-hidden border-2 border-primary shadow-lg shadow-primary/10 group h-full">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm rounded-bl-lg">
+          Popular
         </div>
+        <CardHeader className="text-center pb-8 pt-6 relative">
+          <CardTitle>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-2">Monthly</h3>
+            <div className="flex items-baseline justify-center">
+              <span className="text-4xl sm:text-5xl font-extrabold">9.99</span>
+              <span className="text-2xl sm:text-3xl font-extrabold">$</span>
+              <span className="ml-2 text-gray-500 text-base sm:text-lg">/month</span>
+            </div>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="pb-8 relative">
+          <ul className="space-y-4">
+            {[
+              "1,00,000 Words/Month",
+              "50+ Template Access",
+              "Unlimited Download & Copy",
+              "1 Year of History"
+            ].map((feature, index) => (
+              <li key={index} className="flex items-center space-x-3 text-sm sm:text-base">
+                <div className="rounded-full bg-primary/10 p-1">
+                  <Check className="h-4 w-4 text-primary shrink-0" />
+                </div>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+          <Button 
+            className="w-full mt-8 bg-primary hover:bg-primary/90 text-white shadow-md hover:shadow-lg transition-all duration-300 rounded-xl"
+          >
+            Get Started
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</div>
 
         {/* Additional Features Section */}
         <div className="mt-16 text-center opacity-0 animate-fade-in-up">

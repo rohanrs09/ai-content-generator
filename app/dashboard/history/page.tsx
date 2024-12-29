@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { currentUser } from "@clerk/nextjs/server";
 import { desc, eq } from "drizzle-orm";
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { AIOutput } from "@/utils/schema";
 import { Button } from "@/components/ui/button";
 import Templates from "@/app/(data)/Templates";
 import { db } from "@/utils/db";
+import { useEffect, useState } from "react";
 
 export interface HISTORY {
   id: number;
