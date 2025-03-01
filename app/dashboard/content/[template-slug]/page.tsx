@@ -80,6 +80,7 @@ function CreateNewContent(props: PROPS) {
     });
     console.log(result);
   };
+  
 
   return (
     <div className="p-10">
