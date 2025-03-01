@@ -1,42 +1,45 @@
 import React, { useEffect, useRef } from "react";
 import "@toast-ui/editor/dist/toastui-editor.css";
-
 import { Editor } from "@toast-ui/react-editor";
 import { Button } from "@/components/ui/button";
 import { Copy } from "lucide-react";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-interface props {
+interface Props {
   aiOutput: string;
 }
 
-function OutputSection({ aiOutput }: props) {
-  const editorRef: any = useRef();
+function OutputSection({ aiOutput }: Props) {
+  const editorRef = useRef<Editor>(null);
 
   useEffect(() => {
-    const editorInstance = editorRef.current.getInstance();
-    editorInstance.setMarkdown(aiOutput);
+    if (editorRef.current) {
+      const editorInstance = editorRef.current.getInstance();
+      if (aiOutput) {
+        editorInstance.setMarkdown(aiOutput);
+      }
+    }
   }, [aiOutput]);
 
   const handleButtonClick = () => {
-    // copy markdown content
-    const editorInstance = editorRef.current.getInstance();
-    const markdown = editorInstance.getMarkdown();
-    navigator.clipboard.writeText(markdown).then(() => {
-      // show toast notification
-      toast.success("Sucess copied Content", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
+    if (editorRef.current) {
+      const editorInstance = editorRef.current.getInstance();
+      const markdown = editorInstance.getMarkdown();
+      navigator.clipboard.writeText(markdown).then(() => {
+        toast.success("Successfully copied content", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
-    });
+    }
   };
 
   return (
@@ -50,13 +53,15 @@ function OutputSection({ aiOutput }: props) {
       </div>
       <Editor
         ref={editorRef}
-        initialValue="Your result will be here "
+        initialValue="Your result will be here"
         initialEditType="wysiwyg"
         height="600px"
         useCommandShortcut={true}
-        onChange={() =>
-          console.log(editorRef.current.getInstance().getMarkdown())
-        }
+        onChange={() => {
+          if (editorRef.current) {
+            console.log(editorRef.current.getInstance().getMarkdown());
+          }
+        }}
       />
       <ToastContainer />
     </div>
