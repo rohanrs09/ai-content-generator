@@ -104,7 +104,7 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
           transition={{ duration: 0.5 }}
           className="relative mb-5"
         >
-          <h1 className="text-3xl md:text-4xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-primary">
+          <h1 className="text-2xl md:text-3xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-500 to-primary">
             Browse All Templates
           </h1>
           <span className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/70 to-transparent rounded-full"></span>

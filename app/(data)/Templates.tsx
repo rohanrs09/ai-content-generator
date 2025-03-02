@@ -125,7 +125,367 @@ export default  [
             }
         ]
     },
-
+    {
+        name: 'Email Subject Line Generator',
+        desc: 'Create high-converting email subject lines that boost open rates and drive engagement with your campaigns.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/3062/3062634.png',
+        category: 'Email Marketing',
+        slug: 'email-subject-generator',
+        aiPrompt: 'Generate 10 compelling email subject lines for the specified product, audience, and goal in rich text editor format',
+        form: [
+            {
+                label: 'What product/service are you promoting?',
+                field: 'input',
+                name: 'product',
+                required: true
+            },
+            {
+                label: 'Describe your target audience',
+                field: 'input',
+                name: 'audience',
+                required: true
+            },
+            {
+                label: 'What is the goal of your email? (e.g. sales, sign-ups)',
+                field: 'input',
+                name: 'goal',
+                required: true
+            }
+        ]
+    },
+    {
+        name: 'Twitter Thread Generator',
+        desc: 'Create engaging, viral-worthy Twitter threads that position you as a thought leader in your industry.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/3256/3256013.png',
+        category: 'Social Media',
+        slug: 'twitter-thread',
+        aiPrompt: 'Create a compelling 8-10 part Twitter thread about the given topic with emojis and hashtags in rich text editor format',
+        form: [
+            {
+                label: 'What topic would you like to create a thread about?',
+                field: 'input',
+                name: 'topic',
+                required: true
+            },
+            {
+                label: 'Target audience for this content',
+                field: 'input',
+                name: 'audience'
+            },
+            {
+                label: 'Key points to include (optional)',
+                field: 'textarea',
+                name: 'keypoints'
+            }
+        ]
+    },
+    {
+        name: 'SQL Query Generator',
+        desc: 'Generate optimized SQL queries based on your database requirements without needing to remember complex syntax.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/2772/2772165.png',
+        category: 'Development',
+        slug: 'sql-generator',
+        aiPrompt: 'Generate an optimized SQL query based on the requirements and database schema. Output in rich text editor format with code blocks.',
+        form: [
+            {
+                label: 'Describe what you want the SQL query to do',
+                field: 'textarea',
+                name: 'requirement',
+                required: true
+            },
+            {
+                label: 'Database schema (tables and their columns)',
+                field: 'textarea',
+                name: 'schema',
+                required: true
+            },
+            {
+                label: 'Database type (MySQL, PostgreSQL, etc.)',
+                field: 'input',
+                name: 'dbType',
+                required: true
+            }
+        ]
+    },
+    {
+        name: 'API Documentation Generator',
+        desc: 'Automatically generate professional API documentation from your code or endpoint descriptions.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/2621/2621303.png',
+        category: 'Development',
+        slug: 'api-docs-generator',
+        aiPrompt: 'Generate professional API documentation with examples based on the provided endpoint details in rich text editor format with markdown',
+        form: [
+            {
+                label: 'Endpoint URL pattern (e.g. /api/users/:id)',
+                field: 'input',
+                name: 'endpoint',
+                required: true
+            },
+            {
+                label: 'HTTP Method (GET, POST, PUT, DELETE)',
+                field: 'input',
+                name: 'method',
+                required: true
+            },
+            {
+                label: 'Request parameters/body structure',
+                field: 'textarea',
+                name: 'request'
+            },
+            {
+                label: 'Response structure',
+                field: 'textarea',
+                name: 'response'
+            }
+        ]
+    },
+    {
+        name: 'E-commerce Product Description',
+        desc: 'Create compelling product descriptions that convert browsers into buyers with persuasive, SEO-friendly content.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/3081/3081559.png',
+        category: 'E-commerce',
+        slug: 'product-description',
+        aiPrompt: 'Generate an SEO-friendly, persuasive product description based on the details provided in rich text editor format',
+        form: [
+            {
+                label: 'Product Name',
+                field: 'input',
+                name: 'productName',
+                required: true
+            },
+            {
+                label: 'Key Features and Benefits (bullet points)',
+                field: 'textarea',
+                name: 'features',
+                required: true
+            },
+            {
+                label: 'Target Customer',
+                field: 'input',
+                name: 'target'
+            },
+            {
+                label: 'Price Point (budget, mid-range, premium)',
+                field: 'input',
+                name: 'pricing'
+            }
+        ]
+    },
+    {
+        name: 'Sales Email Template',
+        desc: 'Create personalized sales outreach emails that grab attention and drive responses using proven copywriting frameworks.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/9068/9068642.png',
+        category: 'Sales',
+        slug: 'sales-email',
+        aiPrompt: 'Generate a personalized sales outreach email following the AIDA framework based on the provided details in rich text editor format',
+        form: [
+            {
+                label: 'Your Product/Service',
+                field: 'input',
+                name: 'product',
+                required: true
+            },
+            {
+                label: 'Recipient\'s Company/Role',
+                field: 'input',
+                name: 'recipient',
+                required: true
+            },
+            {
+                label: 'Unique Value Proposition',
+                field: 'textarea',
+                name: 'value',
+                required: true
+            },
+            {
+                label: 'Call-to-Action (what you want them to do)',
+                field: 'input',
+                name: 'cta',
+                required: true
+            }
+        ]
+    },
+    {
+        name: 'Story Plot Generator',
+        desc: 'Generate creative and engaging story plots for short stories, novels, or screenplays based on your parameters.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/3534/3534033.png',
+        category: 'Creative Writing',
+        slug: 'story-plot',
+        aiPrompt: 'Create a detailed story plot with character descriptions, setting, and major plot points based on the inputs in rich text editor format',
+        form: [
+            {
+                label: 'Genre (e.g., sci-fi, romance, thriller)',
+                field: 'input',
+                name: 'genre',
+                required: true
+            },
+            {
+                label: 'Main Character Description',
+                field: 'textarea',
+                name: 'character'
+            },
+            {
+                label: 'Setting/Time Period',
+                field: 'input',
+                name: 'setting'
+            },
+            {
+                label: 'Theme or Message',
+                field: 'input',
+                name: 'theme'
+            }
+        ]
+    },
+    {
+        name: 'AI Image Prompt Creator',
+        desc: 'Create detailed prompts for image generation AI tools like DALL-E, Midjourney, or Stable Diffusion to get the perfect results.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/10464/10464939.png',
+        category: 'AI Art',
+        slug: 'image-prompt',
+        aiPrompt: 'Generate detailed, effective prompts for AI image generation tools based on the concept provided in rich text editor format',
+        form: [
+            {
+                label: 'Describe the image you want to create',
+                field: 'textarea',
+                name: 'concept',
+                required: true
+            },
+            {
+                label: 'Style (realistic, anime, oil painting, etc.)',
+                field: 'input',
+                name: 'style'
+            },
+            {
+                label: 'Mood/Atmosphere',
+                field: 'input',
+                name: 'mood'
+            },
+            {
+                label: 'AI Tool (DALL-E, Midjourney, Stable Diffusion)',
+                field: 'input',
+                name: 'tool'
+            }
+        ]
+    },
+    {
+        name: 'Study Flashcards Creator',
+        desc: 'Transform any topic or text into effective study flashcards with questions on one side and answers on the other.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/2541/2541984.png',
+        category: 'Education',
+        slug: 'flashcard-generator',
+        aiPrompt: 'Generate a set of 10 study flashcards with questions and answers based on the provided content in rich text editor format',
+        form: [
+            {
+                label: 'Topic or Subject',
+                field: 'input',
+                name: 'topic',
+                required: true
+            },
+            {
+                label: 'Content to transform into flashcards',
+                field: 'textarea',
+                name: 'content',
+                required: true
+            },
+            {
+                label: 'Difficulty Level (beginner, intermediate, advanced)',
+                field: 'input',
+                name: 'difficulty'
+            }
+        ]
+    },
+    {
+        name: 'Meal Plan Generator',
+        desc: 'Create personalized weekly meal plans based on your dietary preferences, restrictions, and nutritional goals.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/1046/1046747.png',
+        category: 'Health',
+        slug: 'meal-plan',
+        aiPrompt: 'Generate a detailed 7-day meal plan with breakfast, lunch, dinner and snacks based on the provided dietary preferences and goals. Include nutritional information and simple preparation instructions in rich text editor format.',
+        form: [
+            {
+                label: 'Dietary preferences (e.g., vegetarian, keto, paleo)',
+                field: 'input',
+                name: 'dietType',
+                required: true
+            },
+            {
+                label: 'Allergies or food restrictions',
+                field: 'input',
+                name: 'restrictions'
+            },
+            {
+                label: 'Calorie target per day (if applicable)',
+                field: 'input',
+                name: 'calories'
+            },
+            {
+                label: 'Health goals (e.g., weight loss, muscle gain, maintenance)',
+                field: 'input',
+                name: 'goals'
+            }
+        ]
+    },
+    {
+        name: 'Resume Tailoring Assistant',
+        desc: 'Automatically customize your resume for specific job descriptions to increase your chances of getting past ATS systems and landing interviews.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/3135/3135692.png',
+        category: 'Career',
+        slug: 'resume-tailoring',
+        aiPrompt: 'Analyze the job description and suggest specific modifications to the resume to better match the requirements. Provide output in rich text editor format with clear before/after suggestions.',
+        form: [
+            {
+                label: 'Paste the job description',
+                field: 'textarea',
+                name: 'jobDescription',
+                required: true
+            },
+            {
+                label: 'Paste your current resume content',
+                field: 'textarea',
+                name: 'resumeContent',
+                required: true
+            }
+        ]
+    },
+    {
+        name: 'Lesson Plan Creator',
+        desc: 'Create comprehensive lesson plans for teachers, tutors, or trainers with learning objectives, activities, and assessments.',
+        icon: 'https://cdn-icons-png.flaticon.com/128/2232/2232688.png',
+        category: 'Education',
+        slug: 'lesson-plan',
+        aiPrompt: 'Create a detailed lesson plan including objectives, activities, materials needed, assessment methods, and timing for each section in rich text editor format.',
+        form: [
+            {
+                label: 'Subject/Topic',
+                field: 'input',
+                name: 'subject',
+                required: true
+            },
+            {
+                label: 'Age/Grade Level',
+                field: 'input',
+                name: 'gradeLevel',
+                required: true
+            },
+            {
+                label: 'Lesson Duration (minutes)',
+                field: 'input',
+                name: 'duration',
+                required: true
+            },
+            {
+                label: 'Learning Objectives (What students should learn)',
+                field: 'textarea',
+                name: 'objectives',
+                required: true
+            },
+            {
+                label: 'Available Materials/Resources',
+                field: 'textarea',
+                name: 'resources'
+            }
+        ]
+    },
     {
         name: 'Rewrite Article (Plagiarism Free)',
         desc: 'Use this tool to rewrite existing Article or Blog Post which can bypass AI detectors and also make it plagiarism free.',
