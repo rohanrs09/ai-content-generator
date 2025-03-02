@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { Check, Sparkles, CreditCard, Calendar, Shield, Zap, Award } from "lucid
 import { loadStripe } from "@stripe/stripe-js";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 
 // Initialize Stripe with your publishable key
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
@@ -16,8 +17,31 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY 
 export default function BillingPage() {
   const [billingInterval, setBillingInterval] = useState<'monthly' | 'yearly'>('monthly');
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [currentPlan, setCurrentPlan] = useState<string>('free');
+  const [isSubscriber, setIsSubscriber] = useState(false);
   const { user } = useUser();
   const router = useRouter();
+
+  useEffect(() => {
+    // Check user's current subscription status
+    const checkSubscription = async () => {
+      if (!user) return;
+      
+      try {
+        const response = await fetch('/api/billing/check-subscription');
+        const data = await response.json();
+        
+        if (data.subscription) {
+          setCurrentPlan(data.subscription.plan);
+          setIsSubscriber(data.subscription.plan !== 'free');
+        }
+      } catch (error) {
+        console.error('Error checking subscription:', error);
+      }
+    };
+    
+    checkSubscription();
+  }, [user]);
 
   // Pricing plans with monthly and yearly options
   const plans = {
@@ -48,8 +72,8 @@ export default function BillingPage() {
         "Priority Support"
       ],
       priceId: { 
-        monthly: "price_monthly_123xyz", // Replace with actual Stripe price IDs
-        yearly: "price_yearly_123xyz"
+        monthly: "price_1Qy8YYRpySNP4jZ4Gfyeo4n5", // Replace with actual Stripe price IDs
+        yearly: "price_1Qy8aXRpySNP4jZ4EcXnbWvu"
       }
     },
     business: {
@@ -66,25 +90,74 @@ export default function BillingPage() {
         "Dedicated Account Manager"
       ],
       priceId: { 
-        monthly: "price_monthly_456abc", // Replace with actual Stripe price IDs
-        yearly: "price_yearly_456abc"
+        monthly: "price_1Qy8bSRpySNP4jZ4i89sTV4Z", // Replace with actual Stripe price IDs
+        yearly: "price_1Qy8c7RpySNP4jZ4qfL23Y6c"
       }
     }
   };
+
+
+// Open the customer portal for existing subscribers
+// For the customer portal button handler:
+const handleOpenCustomerPortal = async () => {
+  setIsLoading(true);
+  console.log("Opening customer portal...");
+  
+  try {
+    const response = await fetch('/api/billing/create-portal', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    
+    const data = await response.json();
+    console.log("Portal response:", data);
+    
+    if (data.url) {
+      console.log("Redirecting to portal URL:", data.url);
+      window.location.href = data.url;
+    } else if (data.redirectUrl && data.error === 'Customer Portal not configured') {
+      // If it's a configuration error, provide a helpful message
+      toast.error('Stripe Customer Portal needs to be configured');
+      console.error("Stripe Customer Portal not configured. Please set it up in your Stripe Dashboard.");
+      
+      // Option: Open Stripe Dashboard in a new tab to configure
+      if (confirm("Would you like to open Stripe Dashboard to configure the Customer Portal?")) {
+        window.open(data.redirectUrl, '_blank');
+      }
+    } else {
+      console.error("No URL in portal response:", data);
+      toast.error(data.error || 'Could not open customer portal');
+    }
+  } catch (error) {
+    console.error('Error opening customer portal:', error);
+    toast.error('Failed to open customer portal');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   // Handle subscription checkout
   const handleCheckout = async (plan: 'free' | 'pro' | 'business') => {
     try {
       setIsLoading(true);
       
+      if (!user) {
+        toast.error("You need to be logged in to purchase a plan");
+        return;
+      }
+      
       if (plan === 'free') {
         // Handle free plan activation
         await fetch("/api/billing/activate-free", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ userId: user?.id }),
+          body: JSON.stringify({ 
+            userId: user.id,
+            email: user.primaryEmailAddress?.emailAddress
+          }),
         });
         
+        toast.success("Free plan activated!");
         router.push("/dashboard");
         return;
       }
@@ -95,12 +168,17 @@ export default function BillingPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           priceId: plans[plan].priceId[billingInterval],
-          userId: user?.id,
+          userId: user.id,
           interval: billingInterval
         }),
       });
       
-      const { sessionId } = await response.json();
+      const { sessionId, error } = await response.json();
+      
+      if (error) {
+        toast.error(error);
+        return;
+      }
       
       // Redirect to Stripe checkout
       const stripe = await stripePromise;
@@ -108,10 +186,12 @@ export default function BillingPage() {
         const { error } = await stripe.redirectToCheckout({ sessionId });
         if (error) {
           console.error("Stripe checkout error:", error);
+          toast.error("Payment failed. Please try again.");
         }
       }
     } catch (error) {
       console.error("Checkout error:", error);
+      toast.error("There was a problem processing your request. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -138,8 +218,21 @@ export default function BillingPage() {
           >
             Choose the perfect plan to unleash your creativity and productivity with our advanced AI tools.
           </motion.p>
+          
+          {currentPlan !== 'free' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-4"
+            >
+              <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full">
+                <span className="text-sm font-medium">Current Plan: {currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1)}</span>
+              </div>
+            </motion.div>
+          )}
         </div>
-
+        
         {/* Billing toggle */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -182,7 +275,11 @@ export default function BillingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <Card className="border-2 hover:border-gray-300 transition-all h-full flex flex-col">
+            <Card className={`border-2 transition-all h-full flex flex-col ${
+              currentPlan === 'free' 
+                ? 'border-primary bg-primary/5' 
+                : 'hover:border-gray-300'
+            }`}>
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl font-bold">{plans.free.name}</CardTitle>
                 <CardDescription>{plans.free.description}</CardDescription>
@@ -203,11 +300,15 @@ export default function BillingPage() {
               </CardContent>
               <CardFooter>
                 <Button 
-                  className="w-full bg-gray-100 hover:bg-gray-200 text-gray-800"
+                  className={`w-full ${
+                    currentPlan === 'free'
+                      ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                      : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
+                  }`}
                   onClick={() => handleCheckout('free')}
-                  disabled={isLoading}
+                  disabled={isLoading || currentPlan === 'free'}
                 >
-                  {isLoading ? "Processing..." : "Get Started"}
+                  {isLoading ? "Processing..." : currentPlan === 'free' ? "Current Plan" : "Get Started"}
                 </Button>
               </CardFooter>
             </Card>
@@ -219,7 +320,11 @@ export default function BillingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
-            <Card className="border-2 border-primary relative shadow-lg shadow-primary/10 h-full flex flex-col">
+            <Card className={`border-2 relative shadow-lg h-full flex flex-col ${
+              currentPlan === 'pro' 
+                ? 'border-primary bg-primary/5' 
+                : 'border-primary/70 shadow-primary/10'
+            }`}>
               <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-xs font-medium rounded-bl-lg">
                 MOST POPULAR
               </div>
@@ -248,11 +353,19 @@ export default function BillingPage() {
               </CardContent>
               <CardFooter>
                 <Button 
-                  className="w-full bg-primary hover:bg-primary/90"
-                  onClick={() => handleCheckout('pro')}
+                  className={`w-full ${
+                    currentPlan === 'pro'
+                      ? 'bg-primary/70 hover:bg-primary/80'
+                      : 'bg-primary hover:bg-primary/90'
+                  }`}
+                  onClick={currentPlan === 'pro' ? handleOpenCustomerPortal : () => handleCheckout('pro')}
                   disabled={isLoading}
                 >
-                  {isLoading ? "Processing..." : "Upgrade Now"}
+                  {isLoading
+                    ? "Processing..."
+                    : currentPlan === 'pro'
+                    ? "Manage Subscription"
+                    : "Upgrade Now"}
                 </Button>
               </CardFooter>
             </Card>
@@ -264,7 +377,11 @@ export default function BillingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <Card className="border-2 hover:border-gray-300 transition-all h-full flex flex-col">
+            <Card className={`border-2 transition-all h-full flex flex-col ${
+              currentPlan === 'business' 
+                ? 'border-purple-500 bg-purple-50' 
+                : 'hover:border-gray-300'
+            }`}>
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl font-bold flex items-center">
                   {plans.business.name}
@@ -290,11 +407,19 @@ export default function BillingPage() {
               </CardContent>
               <CardFooter>
                 <Button 
-                  className="w-full bg-gradient-to-r from-purple-600 to-primary hover:opacity-90"
-                  onClick={() => handleCheckout('business')}
+                  className={`w-full ${
+                    currentPlan === 'business'
+                      ? 'bg-gradient-to-r from-purple-500 to-primary hover:opacity-95'
+                      : 'bg-gradient-to-r from-purple-600 to-primary hover:opacity-90'
+                  }`}
+                  onClick={currentPlan === 'business' ? handleOpenCustomerPortal : () => handleCheckout('business')}
                   disabled={isLoading}
                 >
-                  {isLoading ? "Processing..." : "Upgrade to Business"}
+                  {isLoading
+                    ? "Processing..."
+                    : currentPlan === 'business'
+                    ? "Manage Subscription"
+                    : "Upgrade to Business"}
                 </Button>
               </CardFooter>
             </Card>
@@ -372,6 +497,7 @@ export default function BillingPage() {
               size="lg"
               className="bg-white text-primary hover:bg-white/90"
               onClick={() => handleCheckout('pro')}
+              disabled={isLoading || currentPlan === 'pro'}
             >
               <span className="mr-2">Get Started</span>
               <CreditCard className="h-5 w-5" />
