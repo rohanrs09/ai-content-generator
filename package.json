@@ -34,13 +34,15 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.5.2",
+    "react-intersection-observer": "^9.15.1",
     "react-markdown": "^10.0.0",
+    "react-scroll-parallax": "^3.4.5",
     "react-syntax-highlighter": "^15.6.1",
     "react-toastify": "^10.0.5",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "stripe": "^17.7.0",
-    "tailwind-merge": "^2.3.0",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

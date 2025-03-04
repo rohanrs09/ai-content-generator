@@ -198,15 +198,15 @@ const handleOpenCustomerPortal = async () => {
   };
 
   return (
-    <div className="w-full py-12 lg:py-24 min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <div className="container px-4 md:px-6 mx-auto">
+    <div className="w-full py-8 lg:py-12 min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="container px-4 md:px-6 mx-auto">
         {/* Header */}
-        <div className="text-center space-y-4 mb-2">
+        <div className="text-center space-y-2 mb-2">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-700"
+            className="text-3xl md:text-4xl lg:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-700 pb-4"
           >
             Upgrade Your AI Experience
           </motion.h1>
@@ -214,7 +214,7 @@ const handleOpenCustomerPortal = async () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-500 max-w-2xl mx-auto text-base md:text-lg"
+            className="text-gray-500 max-w-2xl mx-auto text-base mt-2 md:text-lg"
           >
             Choose the perfect plan to unleash your creativity and productivity with our advanced AI tools.
           </motion.p>
