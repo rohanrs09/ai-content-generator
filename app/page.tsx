@@ -1350,12 +1350,12 @@ export default function Home() {
                 },
                 {
                   quote:
-                    "The templates are incredible! They give me the perfect starting point so I'm never facing a blank page. My productivity has skyrocketed.",
-                  name: "John Smith",
+                    "AI-Gen's templates are incredible! Never facing a blank page again. Reached 60K video views in just 10 days using this platform.",
+                  name: "Rohan Shelke",
                   role: "Content Creator",
-                  company: "CreativeMinds LLC",
-                  avatar: "JS",
-                  rating: 5,
+                  company: "Shodhak Pravasi",
+                  avatar: "SP",
+                  rating:5,
                   gradient: "from-purple-500 to-violet-400",
                   color: "purple",
                 },
@@ -1470,7 +1470,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Final CTA Section - Streamlined Design */}
+        {/* Final Last Section - Streamlined Design */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-50/80 to-white">
           {/* Simple background with blur effects - grid removed */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
