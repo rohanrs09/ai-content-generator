@@ -1,9 +1,20 @@
 import { SignUp } from "@clerk/nextjs";
+import { AppHeader } from "@/components/ui/shared/AppHeader";
 
-export default function Page() {
+export default function SignUpPage() {
   return (
-    <div className="flex items-center justify-center h-screen">
-        <SignUp />
+    <div className="min-h-screen bg-gray-50">
+      <AppHeader />
+      <div className="pt-[80px] flex justify-center">
+        <div className="w-full max-w-md">
+          <SignUp 
+            path="/sign-up" 
+            routing="path" 
+            signInUrl="/sign-in" 
+            redirectUrl="/dashboard" 
+          />
+        </div>
+      </div>
     </div>
   );
 }

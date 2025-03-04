@@ -3,8 +3,8 @@ import React from 'react'
 
 function Settings() {
   return (
-    <div className='flex items-center justify-center h-full pt-4'>
-        <UserProfile routing="hash"/>
+    <div className='flex justify-center w-full pt-6 md:pt-8 lg:pt-10 px-4 sm:px-6 md:px-8'>
+      <UserProfile routing="hash" />
     </div>
   )
 }

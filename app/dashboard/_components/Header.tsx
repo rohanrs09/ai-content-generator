@@ -1,21 +1,62 @@
-import { DockDemo } from "@/components/DockDemo";
-import { UserButton } from "@clerk/nextjs";
-import { Search } from "lucide-react";
-import React from "react";
+"use client";
 
-function Header() {
+import { UserButton } from "@clerk/nextjs";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { Button } from "@/components/ui/button";
+
+interface HeaderProps {
+  toggleSidebar: () => void;
+  isSidebarOpen: boolean;
+  isMobile?: boolean;
+}
+
+function Header({ toggleSidebar, isSidebarOpen, isMobile }: HeaderProps) {
+  const router = useRouter();
+  
+  const handleLogoClick = () => {
+    router.push("/dashboard");
+  };
+
   return (
-    <div className="p-2 shadow-sm border-b-2 flex justify-between bg-white">
-      <div className="flex justify-center w-full">
-        <div className="flex gap-2 items-center">
-          <DockDemo />
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white border-b shadow-sm h-[60px]">
+      <div className="w-full h-full px-4 md:px-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          {/* Mobile menu toggle button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleSidebar}
+            className="lg:hidden flex-shrink-0"
+            aria-label={isSidebarOpen ? "Close menu" : "Open menu"}
+          >
+            {isSidebarOpen ? (
+              <X className="h-5 w-5" />
+            ) : (
+              <Menu className="h-5 w-5" />
+            )}
+          </Button>
+          
+          {/* Logo and brand name */}
+          <div 
+            onClick={handleLogoClick}
+            className="flex items-center gap-2.5 cursor-pointer"
+          >
+            <div className="animate-spin-slow">
+              <Image src="/logo.svg" alt="AI-Gen Logo" width={32} height={32} priority />
+            </div>
+            <h1 className="text-xl font-bold hidden sm:block">AI-Gen</h1>
+          </div>
+        </div>
+        
+        <div>
+          {/* Set afterSignOutUrl to / instead of /sign-in */}
+          <UserButton afterSignOutUrl="/" />
         </div>
       </div>
-      <div className="flex gap-5 items-center">
-        {/* <h2 className='bg-primary p-1 rounded-full text-xs text-white px-2 '>🔥Join Membership just for $9.9/Month</h2> */}
-        <UserButton />
-      </div>
-    </div>
+    </header>
   );
 }
 

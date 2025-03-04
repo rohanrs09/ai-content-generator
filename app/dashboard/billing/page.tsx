@@ -201,7 +201,7 @@ const handleOpenCustomerPortal = async () => {
     <div className="w-full py-12 lg:py-24 min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="container px-4 md:px-6 mx-auto">
         {/* Header */}
-        <div className="text-center space-y-4 mb-10">
+        <div className="text-center space-y-4 mb-2">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

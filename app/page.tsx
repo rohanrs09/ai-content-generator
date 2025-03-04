@@ -5,6 +5,7 @@ import { HeroVideoDialogDemo } from "@/components/HeroVideoDialogDemo";
 import GridPattern from "@/components/magicui/grid-pattern";
 import { OrbitingCirclesDemo } from "@/components/OrbitingCirclesDemo";
 import { Button } from "@/components/ui/button";
+import { AppHeader } from "@/components/ui/shared/AppHeader";
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -33,7 +34,7 @@ export default function Home() {
 
   return (
     <div>
-      <Header />
+      <AppHeader />
       <div>
         <section className=" z-50">
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">

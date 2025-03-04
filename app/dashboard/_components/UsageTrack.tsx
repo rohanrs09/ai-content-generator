@@ -1,33 +1,22 @@
-// app/dashboard/_components/UsageTrack.tsx
 "use client";
-import { useEffect, useState, useContext } from "react";
-import { useUser } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import { db } from "@/utils/db";
-import { AIOutput, userSubscriptions } from "@/utils/schema";
-import { eq } from "drizzle-orm";
-import { TotalUsageContext, UpdateCreditUsageContext } from "@/app/context/UsageContext";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { toast } from "react-hot-toast";
 
-// Updated interface to match database schema
-export interface HISTORY {
-  id: number;
-  formData: string | null;  // Now nullable
-  aiResponse: string | null;
-  templateSlug: string | null;  // Now nullable
-  createdBy: string | null;
-  createdAt: Date | null;  // Changed from string to Date
-}
+import React, { useContext, useEffect, useState } from "react";
+import { db } from "@/utils/db";
+import { eq } from "drizzle-orm";
+import { AIOutput, userSubscriptions } from "@/utils/schema";
+import { useUser } from "@clerk/nextjs";
+import { TotalUsageContext } from "@/app/context/TotalUsageContext";
+import { UpdateCreditUsageContext } from "@/app/context/UpdateCreditUsageContext";
+import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
 function UsageTrack() {
   const { user } = useUser();
-  const router = useRouter();
   const { totalUsage, setTotalUsage } = useContext(TotalUsageContext);
-  const { updateCreditUsage, setUpdateCreditUsage } = useContext(UpdateCreditUsageContext);
+  const { updateCreditUsage } = useContext(UpdateCreditUsageContext);
   const [creditLimit, setCreditLimit] = useState<number>(10000);
   const [plan, setPlan] = useState<string>('free');
+  const [loading, setLoading] = useState<boolean>(true);
   
   useEffect(() => {
     if (user) {
@@ -44,7 +33,7 @@ function UsageTrack() {
   
   const getUserSubscription = async () => {
     try {
-      // Get user's subscription info
+      setLoading(true);
       const userSubscriptionData = await db
         .select()
         .from(userSubscriptions)
@@ -65,58 +54,75 @@ function UsageTrack() {
           }),
         });
       }
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching subscription data:", error);
+      setLoading(false);
     }
   };
   
   const getUsageData = async () => {
     try {
-      // Get user's AI output data
+      setLoading(true);
       const result = await db
         .select()
         .from(AIOutput)
         .where(eq(AIOutput.createdBy, user?.primaryEmailAddress?.emailAddress || ''));
       
-      calculateTotalUsage(result);
+      // Calculate total usage based on response lengths
+      let total = 0;
+      result.forEach((item) => {
+        total += Number(item.aiResponse?.length || 0);
+      });
+      
+      setTotalUsage(total);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching usage data:", error);
+      setLoading(false);
     }
   };
   
-  const calculateTotalUsage = (result: HISTORY[]) => {
-    let total = 0;
-    result.forEach((item) => {
-      total = total + Number(item.aiResponse?.length || 0);
-    });
-    
-    setTotalUsage(total);
-    
-    // Check if user has exceeded credit limit
-    if (total >= creditLimit) {
-      toast.error(`You've reached your ${creditLimit} word limit. Please upgrade your plan to continue.`);
-      router.push("/dashboard/billing");
-    }
-  };
+  // Calculate percentage of usage
+  const usagePercentage = Math.min((totalUsage / creditLimit) * 100, 100);
   
   return (
-    <div className="m-5">
-      <div className="bg-primary text-white p-3 rounded-lg">
-        <h2 className="font-medium">Credits ({plan.toUpperCase()})</h2>
-        <div className="h-2 bg-[#9981f9] w-full rounded-full mt-3">
-          <div
-            className="h-2 bg-white rounded-full"
-            style={{
-              width: `${Math.min((totalUsage / creditLimit) * 100, 100)}%`,
-            }}
-          ></div>
-        </div>
-        <h2 className="text-sm my-2">{totalUsage}/{creditLimit} Credits Used</h2>
+    <div className="w-full">
+      <div className="flex justify-between items-center mb-2">
+        <span className={`text-xs font-medium px-2 py-1 rounded-full ${
+          plan === 'free' ? 'bg-gray-200 text-gray-700' : 
+          plan === 'pro' ? 'bg-primary/20 text-primary' : 
+          'bg-yellow-100 text-yellow-800'
+        }`}>
+          {plan.charAt(0).toUpperCase() + plan.slice(1)} Plan
+        </span>
+        
+        <span className="text-xs text-gray-500">
+          {Math.round(usagePercentage)}%
+        </span>
       </div>
+      
+      {/* Progress bar */}
+      <div className="h-1.5 w-full bg-gray-200 rounded-full mb-2">
+        <div 
+          className={`h-full rounded-full ${
+            usagePercentage > 90 ? 'bg-red-500' :
+            usagePercentage > 75 ? 'bg-yellow-500' : 'bg-primary'
+          }`} 
+          style={{ width: `${usagePercentage}%` }}
+        ></div>
+      </div>
+      
+      <div className="flex justify-between text-xs text-gray-500 mb-3">
+        <span>{totalUsage.toLocaleString()}</span>
+        <span>{creditLimit.toLocaleString()} credits</span>
+      </div>
+      
       <Link href="/dashboard/billing">
-        <Button variant="secondary" className="w-full my-3 text-primary">
-          {plan === 'free' ? 'Upgrade' : 'Manage Subscription'}
-        </Button>
+        <button className="w-full bg-primary hover:bg-primary/90 text-white py-1.5 px-3 rounded text-sm flex items-center justify-center gap-1.5 transition-colors">
+          <Sparkles className="h-3.5 w-3.5" />
+          {plan === 'free' ? 'Upgrade Plan' : 'Manage Plan'}
+        </button>
       </Link>
     </div>
   );
