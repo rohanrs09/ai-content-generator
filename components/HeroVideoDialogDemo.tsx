@@ -8,7 +8,7 @@ export function HeroVideoDialogDemo() {
         animationStyle="from-center"
         // videoSrc="https://youtu.be/OGoaJkVKJOw"
         videoSrc="https://www.youtube.com/embed/OGoaJkVKJOw"
-        thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+        thumbnailSrc="/aigen.svg"
         thumbnailAlt="Hero Video"
       />
       <HeroVideoDialog
