@@ -1355,7 +1355,7 @@ export default function Home() {
                   role: "Content Creator",
                   company: "Shodhak Pravasi",
                   avatar: "SP",
-                  rating:5,
+                  rating: 5,
                   gradient: "from-purple-500 to-violet-400",
                   color: "purple",
                 },
@@ -1597,9 +1597,15 @@ export default function Home() {
                     const email = form.email.value;
                     const interest = form.interests.value;
                     const wantsUpdates = form.updates.checked;
-                    const loadingEl = document.getElementById("form-loading") as HTMLElement;
-                    const successMsg = document.getElementById("form-success") as HTMLElement;
-                    const errorMsg = document.getElementById("form-error") as HTMLElement;
+                    const loadingEl = document.getElementById(
+                      "form-loading"
+                    ) as HTMLElement;
+                    const successMsg = document.getElementById(
+                      "form-success"
+                    ) as HTMLElement;
+                    const errorMsg = document.getElementById(
+                      "form-error"
+                    ) as HTMLElement;
 
                     // Show loading state
                     if (loadingEl) {
@@ -1642,8 +1648,9 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                           interest: interest || "Not specified",
                           wantsUpdates: wantsUpdates ? "Yes" : "No",
                           _subject: subject,
-                        })
-                      })
+                        }),
+                      }
+                    )
                       .then((response) => {
                         // Hide loading
                         if (loadingEl) loadingEl.classList.add("hidden");
@@ -1659,38 +1666,38 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                           if (successMsg) successMsg.classList.add("hidden");
                         }, 5000);
                       })
-                        .catch((error) => {
-                          // Hide loading
-                          if (loadingEl) loadingEl.classList.add("hidden");
-                          
-                          // Show error message
-                          if (errorMsg) errorMsg.classList.remove("hidden");
-                          
-                          // Fallback to opening email client directly
-                          console.error("Form submission error:", error);
-                          link.click();
-  
-                          setTimeout(() => {
-                            if (errorMsg) errorMsg.classList.add("hidden");
-                          }, 5000);
-                          });
-                    }}>
-                        
-                      <div>
-                        <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 mb-1"
-                      >
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all"
-                        placeholder="your@email.com"
-                      />
+                      .catch((error) => {
+                        // Hide loading
+                        if (loadingEl) loadingEl.classList.add("hidden");
+
+                        // Show error message
+                        if (errorMsg) errorMsg.classList.remove("hidden");
+
+                        // Fallback to opening email client directly
+                        console.error("Form submission error:", error);
+                        link.click();
+
+                        setTimeout(() => {
+                          if (errorMsg) errorMsg.classList.add("hidden");
+                        }, 5000);
+                      });
+                  }}
+                >
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-1"
+                    >
+                      Email Address <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all"
+                      placeholder="your@email.com"
+                    />
                   </div>
 
                   <div>
@@ -1726,8 +1733,8 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                     </div>
                     <div className="ml-3 text-sm">
                       <label htmlFor="updates" className="text-gray-600">
-                        Send me AI content tips and product updates (no more than
-                        once a week)
+                        Send me AI content tips and product updates (no more
+                        than once a week)
                       </label>
                     </div>
                   </div>
