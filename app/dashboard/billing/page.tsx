@@ -72,8 +72,8 @@ export default function BillingPage() {
         "Priority Support"
       ],
       priceId: { 
-        monthly: "price_1Qy8YYRpySNP4jZ4Gfyeo4n5", // Replace with actual Stripe price IDs
-        yearly: "price_1Qy8aXRpySNP4jZ4EcXnbWvu"
+        monthly: process.env.NEXT_PUBLIC_PRO_MONTHLY_PRICE_ID || "",
+        yearly: process.env.NEXT_PUBLIC_PRO_YEARLY_PRICE_ID || ""
       }
     },
     business: {
@@ -90,8 +90,8 @@ export default function BillingPage() {
         "Dedicated Account Manager"
       ],
       priceId: { 
-        monthly: "price_1Qy8bSRpySNP4jZ4i89sTV4Z", // Replace with actual Stripe price IDs
-        yearly: "price_1Qy8c7RpySNP4jZ4qfL23Y6c"
+        monthly: process.env.NEXT_PUBLIC_BUSINESS_MONTHLY_PRICE_ID || "",
+        yearly: process.env.NEXT_PUBLIC_BUSINESS_YEARLY_PRICE_ID || ""
       }
     }
   };
