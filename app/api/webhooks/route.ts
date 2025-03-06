@@ -6,8 +6,8 @@ import { userSubscriptions } from "@/utils/schema";
 import { eq } from "drizzle-orm";
 
 // Initialize Stripe
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2025-02-24.acacia",
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+  apiVersion: '2025-02-24.acacia',
 });
 
 // Get webhook secret from environment variables
