@@ -335,13 +335,13 @@ export default function Home() {
         {/* Content Challenges Section - Premium Design */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50/80">
           {/* Decorative background elements */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.05),transparent_60%)]"></div>
-            <div className="absolute top-1/3 right-0 w-1/3 h-1/3 bg-[radial-gradient(circle,rgba(244,183,213,0.08),transparent_70%)]"></div>
+          {/* <div className="absolute inset-0 -z-10">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(40%_36%_at_50%_30%,rgba(99,102,241,0.08)_0%,transparent_60%)]"></div>
+            <div className="absolute top-1/3 right-0 w-1/3 h-1/3 bg-[radial-gradient(40%_36%_at_50%_30%,rgba(99,102,241,0.08)_0%,transparent_60%)]"></div>
             <div className="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-gray-50/90 to-transparent"></div>
             <div className="hidden md:block absolute top-24 right-24 w-72 h-72 rounded-full border border-primary/5"></div>
             <div className="hidden md:block absolute bottom-36 left-36 w-60 h-60 rounded-full border border-primary/5"></div>
-          </div>
+          </div> */}
 
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
             {/* Section header */}
@@ -989,13 +989,13 @@ export default function Home() {
         {/* Templates Section - Premium Design */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-50/80 to-white">
           {/* Decorative background elements */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_20%,rgba(120,119,198,0.05),transparent_60%)]"></div>
-            <div className="absolute bottom-1/3 left-0 w-1/3 h-1/3 bg-[radial-gradient(circle,rgba(183,213,244,0.08),transparent_70%)]"></div>
+          {/* <div className="absolute inset-0 -z-10">
+            <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(40%_36%_at_50%_30%,rgba(99,102,241,0.08)_0%,transparent_60%)]"></div>
+            <div className="absolute bottom-1/3 left-0 w-1/3 h-1/3 bg-[radial-gradient(40%_36%_at_50%_30%,rgba(99,102,241,0.08)_0%,transparent_60%)]"></div>
             <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-gray-50/90 to-transparent"></div>
             <div className="hidden md:block absolute bottom-24 right-24 w-72 h-72 rounded-full border border-primary/5"></div>
             <div className="hidden md:block absolute top-36 left-36 w-60 h-60 rounded-full border border-primary/5"></div>
-          </div>
+          </div> */}
 
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
             {/* Section header */}
