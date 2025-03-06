@@ -14,11 +14,11 @@ import { motion } from "framer-motion";
 
 export interface HISTORY {
   id: number;
-  formData: string;
+  formData: string | null; // Changed from string to string | null
   aiResponse: string | null;
-  templateSlug: string;
+  templateSlug: string | null; // Changed from string to string | null
   createdBy: string | null;
-  createdAt: string | null;
+  createdAt: string | null | Date; // Added Date as potential type
 }
 
 const History = () => {
@@ -88,23 +88,23 @@ const History = () => {
   };
 
   // Helper function to format dates correctly
-  const formatDate = (dateString: string | null) => {
-    if (!dateString) return "Unknown date";
+  const formatDate = (date: string | Date | null) => {
+    if (!date) return "Unknown date";
     
     try {
-      const date = new Date(dateString);
+      const dateObj = typeof date === 'string' ? new Date(date) : date;
       
       // Check if date is valid
-      if (isNaN(date.getTime())) return "Invalid date";
+      if (isNaN(dateObj.getTime())) return "Invalid date";
       
       // Format date and time with explicit options to ensure consistent display
-      const formattedDate = date.toLocaleDateString('en-US', {
+      const formattedDate = dateObj.toLocaleDateString('en-US', {
         year: 'numeric', 
         month: 'short', 
         day: 'numeric'
       });
       
-      const formattedTime = date.toLocaleTimeString('en-US', {
+      const formattedTime = dateObj.toLocaleTimeString('en-US', {
         hour: '2-digit', 
         minute: '2-digit',
         hour12: true
