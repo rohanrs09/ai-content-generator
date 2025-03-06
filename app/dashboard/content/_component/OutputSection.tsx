@@ -26,7 +26,7 @@ function OutputSection({ aiOutput, loading, template, formData = {} }: Props) {
   const [copied, setCopied] = useState(false);
   const [streaming, setStreaming] = useState(false);
   const [streamComplete, setStreamComplete] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [showToolbar, setShowToolbar] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
   
