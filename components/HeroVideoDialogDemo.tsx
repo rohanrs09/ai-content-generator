@@ -6,8 +6,8 @@ export function HeroVideoDialogDemo() {
       <HeroVideoDialog
         className="dark:hidden block"
         animationStyle="from-center"
-        // videoSrc="https://youtu.be/OGoaJkVKJOw"
-        videoSrc="https://www.youtube.com/embed/OGoaJkVKJOw"
+        // videoSrc="https://youtu.be/naYqAkxLEwQ"
+        videoSrc="https://www.youtube.com/embed/naYqAkxLEwQ"
         thumbnailSrc="/aigen.svg"
         thumbnailAlt="Hero Video"
       />
