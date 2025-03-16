@@ -4,10 +4,10 @@ import { AppHeader } from "@/components/ui/shared/AppHeader";
 
 export default function SignInPage() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+    <div className="min-h-[100dvh] w-full flex items-center justify-center bg-gray-50 px-4 py-8">
+      <div className="w-full max-w-[370px] mx-auto">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             Welcome Back
           </h1>
           <p className="mt-2 text-sm text-gray-600">
@@ -15,14 +15,26 @@ export default function SignInPage() {
           </p>
         </div>
         
-        <div className="bg-white p-4 sm:p-8 shadow rounded-lg">
-          {/* SignIn component from Clerk with custom appearance */}
+        <div className="bg-white p-4 shadow rounded-lg">
           <SignIn 
             appearance={{
               elements: {
-                formButtonPrimary: "bg-primary hover:bg-primary/90 text-white w-full py-2 rounded",
-                card: "bg-white shadow-none",
-                footer: "hidden"
+                formButtonPrimary: "bg-primary hover:bg-primary/90 text-white w-full py-3 rounded",
+                card: "bg-white shadow-none p-0",
+                footer: "hidden",
+                formFieldInput: "py-2.5",
+                formFieldLabel: "text-gray-700",
+                rootBox: "w-full",
+                formContainer: "w-full",
+                form: "w-full"
+              },
+              layout: {
+                socialButtonsPlacement: "bottom",
+                socialButtonsVariant: "blockButton"
+              },
+              variables: {
+                spacingUnit: "4px",
+                borderRadius: "6px"
               }
             }}
           />
