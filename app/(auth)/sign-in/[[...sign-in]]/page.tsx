@@ -4,7 +4,7 @@ import { AppHeader } from "@/components/ui/shared/AppHeader";
 export default function SignInPage() {
   return (
     <div className="min-h-screen bg-gray-50">
-      <AppHeader />
+      {/* <AppHeader /> */}
       <div className="pt-[80px] flex justify-center">
         <div className="w-full max-w-md">
           <SignIn 

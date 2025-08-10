@@ -1,9 +1,11 @@
 "use client";
 
-import { FileClock, Home, Settings, WalletCards } from "lucide-react";
+import { FileClock, Home, LogOut, Settings, WalletCards } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import UsageTrack from "./UsageTrack";
+import { useClerk } from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 function SideNav() {
   const MenuList = [
@@ -31,9 +33,17 @@ function SideNav() {
   
   const path = usePathname();
   const router = useRouter();
+  const { signOut } = useClerk();
   
   const handleNavigation = (menuPath: string) => {
     router.push(menuPath);
+  };
+  
+  const handleLogout = async () => {
+    await signOut(() => {
+      // This callback runs after successful signout
+      router.push("/");
+    });
   };
   
   return (
@@ -59,8 +69,20 @@ function SideNav() {
       </nav>
       
       {/* Usage tracker at bottom */}
-      <div className="p-4 border-t mt-auto">
+      <div className="p-4 border-t">
         <UsageTrack />
+      </div>
+      
+      {/* Logout button */}
+      <div className="p-4 pt-0">
+        <Button 
+          variant="outline" 
+          className="w-full flex items-center gap-3 text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200"
+          onClick={handleLogout}
+        >
+          <LogOut className="h-5 w-5 flex-shrink-0" />
+          <span className="font-medium">Logout</span>
+        </Button>
       </div>
     </div>
   );

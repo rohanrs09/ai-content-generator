@@ -131,7 +131,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.7 }}
               className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
             >
-              <Link href="/dashboard" legacyBehavior>
+              <Link href="/sign-in" legacyBehavior>
                 <a className="group relative inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary transition-all hover:shadow-lg hover:shadow-primary/30 overflow-hidden">
                   <span className="z-10 relative flex items-center">
                     Get Started
