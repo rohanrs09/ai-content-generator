@@ -198,7 +198,7 @@ const handleOpenCustomerPortal = async () => {
   };
 
   return (
-    <div className="w-full py-8 lg:py-12 min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="w-full py-8 lg:py-12 min-h-screen bg-gradient-to-b from-muted to-background">
     <div className="container px-4 md:px-6 mx-auto">
         {/* Header */}
         <div className="text-center space-y-2 mb-2">
@@ -214,7 +214,7 @@ const handleOpenCustomerPortal = async () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-500 max-w-2xl mx-auto text-base mt-2 md:text-lg"
+            className="text-muted-foreground max-w-2xl mx-auto text-base mt-2 md:text-lg"
           >
             Choose the perfect plan to unleash your creativity and productivity with our advanced AI tools.
           </motion.p>
@@ -226,7 +226,7 @@ const handleOpenCustomerPortal = async () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="mt-4"
             >
-              <div className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-full">
+              <div className="inline-flex items-center px-4 py-2 bg-primary/10 text-primary rounded-full">
                 <span className="text-sm font-medium">Current Plan: {currentPlan.charAt(0).toUpperCase() + currentPlan.slice(1)}</span>
               </div>
             </motion.div>
@@ -240,13 +240,13 @@ const handleOpenCustomerPortal = async () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex justify-center mb-10"
         >
-          <div className="inline-flex items-center bg-gray-100 p-1 rounded-lg">
+          <div className="inline-flex items-center bg-muted p-1 rounded-lg">
             <button
               onClick={() => setBillingInterval('monthly')}
               className={`px-4 py-2 text-sm font-medium rounded-md ${
                 billingInterval === 'monthly'
-                  ? 'bg-white shadow-sm text-primary'
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'bg-card shadow-sm text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Monthly
@@ -255,12 +255,12 @@ const handleOpenCustomerPortal = async () => {
               onClick={() => setBillingInterval('yearly')}
               className={`px-4 py-2 text-sm font-medium rounded-md flex items-center ${
                 billingInterval === 'yearly'
-                  ? 'bg-white shadow-sm text-primary'
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'bg-card shadow-sm text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
             >
               Yearly
-              <span className="ml-1.5 bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full">
+              <span className="ml-1.5 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 text-xs font-semibold px-2 py-0.5 rounded-full">
                 Save 16%
               </span>
             </button>
@@ -278,14 +278,14 @@ const handleOpenCustomerPortal = async () => {
             <Card className={`border-2 transition-all h-full flex flex-col ${
               currentPlan === 'free' 
                 ? 'border-primary bg-primary/5' 
-                : 'hover:border-gray-300'
+                : 'hover:border-border'
             }`}>
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl font-bold">{plans.free.name}</CardTitle>
                 <CardDescription>{plans.free.description}</CardDescription>
                 <div className="mt-4">
                   <span className="text-4xl font-bold">$0</span>
-                  <span className="text-gray-500 ml-2">/month</span>
+                  <span className="text-muted-foreground ml-2">/month</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
@@ -302,8 +302,8 @@ const handleOpenCustomerPortal = async () => {
                 <Button 
                   className={`w-full ${
                     currentPlan === 'free'
-                      ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                      : 'bg-gray-100 hover:bg-gray-200 text-gray-800'
+                      ? 'bg-muted text-muted-foreground cursor-not-allowed'
+                      : 'bg-muted hover:bg-accent text-foreground'
                   }`}
                   onClick={() => handleCheckout('free')}
                   disabled={isLoading || currentPlan === 'free'}
@@ -338,7 +338,7 @@ const handleOpenCustomerPortal = async () => {
                   <span className="text-4xl font-bold">
                     ${billingInterval === 'monthly' ? plans.pro.price.monthly : plans.pro.price.yearly}
                   </span>
-                  <span className="text-gray-500 ml-2">/{billingInterval === 'monthly' ? 'month' : 'year'}</span>
+                  <span className="text-muted-foreground ml-2">/{billingInterval === 'monthly' ? 'month' : 'year'}</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
@@ -379,8 +379,8 @@ const handleOpenCustomerPortal = async () => {
           >
             <Card className={`border-2 transition-all h-full flex flex-col ${
               currentPlan === 'business' 
-                ? 'border-purple-500 bg-purple-50' 
-                : 'hover:border-gray-300'
+                ? 'border-primary bg-primary/5' 
+                : 'hover:border-border'
             }`}>
               <CardHeader className="pb-4">
                 <CardTitle className="text-2xl font-bold flex items-center">
@@ -392,7 +392,7 @@ const handleOpenCustomerPortal = async () => {
                   <span className="text-4xl font-bold">
                     ${billingInterval === 'monthly' ? plans.business.price.monthly : plans.business.price.yearly}
                   </span>
-                  <span className="text-gray-500 ml-2">/{billingInterval === 'monthly' ? 'month' : 'year'}</span>
+                  <span className="text-muted-foreground ml-2">/{billingInterval === 'monthly' ? 'month' : 'year'}</span>
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
@@ -435,26 +435,26 @@ const handleOpenCustomerPortal = async () => {
         >
           <h2 className="text-2xl font-bold text-center mb-10">All Plans Include</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl border shadow-sm">
+            <div className="bg-card p-6 rounded-xl border shadow-sm">
               <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <Zap className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Fast Processing</h3>
-              <p className="text-gray-500 text-sm">Get your AI-generated content in seconds with our optimized infrastructure.</p>
+              <p className="text-muted-foreground text-sm">Get your AI-generated content in seconds with our optimized infrastructure.</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border shadow-sm">
+            <div className="bg-card p-6 rounded-xl border shadow-sm">
               <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <Shield className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Secure & Private</h3>
-              <p className="text-gray-500 text-sm">Your data is encrypted and never shared with third parties.</p>
+              <p className="text-muted-foreground text-sm">Your data is encrypted and never shared with third parties.</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border shadow-sm">
+            <div className="bg-card p-6 rounded-xl border shadow-sm">
               <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <Calendar className="h-6 w-6 text-primary" />
               </div>
               <h3 className="font-semibold text-lg mb-2">Regular Updates</h3>
-              <p className="text-gray-500 text-sm">We're constantly improving our AI models and adding new features.</p>
+              <p className="text-muted-foreground text-sm">We're constantly improving our AI models and adding new features.</p>
             </div>
           </div>
         </motion.div>
@@ -468,17 +468,17 @@ const handleOpenCustomerPortal = async () => {
         >
           <h2 className="text-2xl font-bold text-center mb-10">Frequently Asked Questions</h2>
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-xl border">
+            <div className="bg-card p-6 rounded-xl border">
               <h3 className="font-semibold text-lg">Can I upgrade or downgrade my plan later?</h3>
-              <p className="mt-2 text-gray-500">Yes, you can change your plan at any time. When upgrading, we'll prorate your existing subscription.</p>
+              <p className="mt-2 text-muted-foreground">Yes, you can change your plan at any time. When upgrading, we'll prorate your existing subscription.</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border">
+            <div className="bg-card p-6 rounded-xl border">
               <h3 className="font-semibold text-lg">How do credits work?</h3>
-              <p className="mt-2 text-gray-500">Credits represent the number of words our AI can generate for you. They refresh monthly on your billing date.</p>
+              <p className="mt-2 text-muted-foreground">Credits represent the number of words our AI can generate for you. They refresh monthly on your billing date.</p>
             </div>
-            <div className="bg-white p-6 rounded-xl border">
+            <div className="bg-card p-6 rounded-xl border">
               <h3 className="font-semibold text-lg">Do unused credits roll over?</h3>
-              <p className="mt-2 text-gray-500">No, credits reset each month with your new billing cycle to ensure optimal service performance.</p>
+              <p className="mt-2 text-muted-foreground">No, credits reset each month with your new billing cycle to ensure optimal service performance.</p>
             </div>
           </div>
         </motion.div>
@@ -495,7 +495,7 @@ const handleOpenCustomerPortal = async () => {
             <p className="text-white/80 mb-6 max-w-2xl mx-auto">Join thousands of satisfied users who are boosting their productivity with our AI tools.</p>
             <Button 
               size="lg"
-              className="bg-white text-primary hover:bg-white/90"
+              className="bg-card text-primary hover:bg-card/90"
               onClick={() => handleCheckout('pro')}
               disabled={isLoading || currentPlan === 'pro'}
             >

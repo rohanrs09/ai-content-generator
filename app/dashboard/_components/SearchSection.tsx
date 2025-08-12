@@ -118,10 +118,10 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
         >
           <div 
             className={cn(
-              "group relative flex items-center gap-2 rounded-xl border bg-white p-2 shadow-lg transition-all duration-300",
+              "group relative flex items-center gap-2 rounded-xl border bg-card p-2 shadow-lg transition-all duration-300",
               isFocused
                 ? "border-primary/50 shadow-primary/10 ring-4 ring-primary/5"
-                : "hover:border-gray-300"
+                : "hover:border-border"
             )}
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/5 text-primary group-hover:bg-primary/10">
@@ -142,7 +142,7 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
               onFocus={handleFocus}
               onBlur={handleBlur}
               aria-label="Search templates"
-              className="flex-1 bg-transparent py-2 outline-none text-gray-800 placeholder:text-gray-400"
+              className="flex-1 bg-transparent py-2 outline-none text-foreground placeholder:text-muted-foreground"
             />
 
             <AnimatePresence>
@@ -153,14 +153,14 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
                   exit={{ opacity: 0, scale: 0.8 }}
                   onClick={clearSearch}
                   aria-label="Clear search"
-                  className="group flex h-8 w-8 items-center justify-center rounded-md hover:bg-gray-100"
+                  className="group flex h-8 w-8 items-center justify-center rounded-md hover:bg-accent"
                 >
-                  <X className="h-4 w-4 text-gray-500 group-hover:text-gray-700" />
+                  <X className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
                 </motion.button>
               )}
             </AnimatePresence>
 
-            <div className="hidden md:flex items-center gap-1 border rounded px-2 py-1 text-xs text-gray-400">
+            <div className="hidden md:flex items-center gap-1 border rounded px-2 py-1 text-xs text-muted-foreground">
               <Command className="h-3.5 w-3.5" />
               <span>K</span>
             </div>
@@ -171,7 +171,7 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
             {/* Small filter indicator */}
             <div className="flex items-center gap-1 px-1 mb-1.5">
               <Filter className="h-3 w-3 text-primary/70" />
-              <span className="text-xs text-gray-500">Filter by:</span>
+              <span className="text-xs text-muted-foreground">Filter by:</span>
               
               {/* Tooltip for filter feedback */}
               <AnimatePresence>
@@ -180,7 +180,7 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="absolute left-20 text-xs bg-primary text-white px-2 py-0.5 rounded"
+                    className="absolute left-20 text-xs bg-primary text-primary-foreground px-2 py-0.5 rounded"
                   >
                     Filter applied!
                   </motion.div>
@@ -202,8 +202,8 @@ function SearchSection({ onSearchInput }: { onSearchInput: (value: string) => vo
                   className={cn(
                     "text-xs whitespace-nowrap px-2.5 py-1.5 rounded-full border transition-all duration-200 snap-start",
                     selectedCategory === category 
-                      ? "bg-primary text-white border-primary font-medium" 
-                      : "bg-white border-gray-200 hover:border-primary/30 hover:bg-primary/5 text-gray-700"
+                      ? "bg-primary text-primary-foreground border-primary font-medium" 
+                      : "bg-card border-border hover:border-primary/30 hover:bg-primary/5 text-foreground"
                   )}
                 >
                   {category}

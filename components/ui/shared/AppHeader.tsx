@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 interface AppHeaderProps {
   toggleSidebar?: () => void;
@@ -31,7 +32,7 @@ export function AppHeader({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-white border-b shadow-sm h-[60px]">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-background border-b shadow-sm h-[60px]">
       <div className="w-full h-full px-4 md:px-6 flex items-center justify-between max-w-screen-2xl mx-auto">
         <div className="flex items-center gap-3">
           {/* Sidebar toggle button - only shown when requested */}
@@ -63,8 +64,9 @@ export function AppHeader({
           </div>
         </div>
         
-        {/* Right side - auth controls */}
-        <div>
+        {/* Right side - theme toggle and auth controls */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
           {isSignedIn ? (
             <UserButton afterSignOutUrl="/" />
           ) : (

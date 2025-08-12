@@ -87,7 +87,7 @@ function CreateNewContent(props: PROPS) {
   };
   
   return (
-    <div className="p-4 md:p-10 bg-gray-50 min-h-screen">
+    <div className="p-4 md:p-10 bg-background min-h-screen">
       <Link href="/dashboard">
         <Button variant="outline" size="sm" className="mb-6">
           <ArrowLeft className="h-4 w-4 mr-2" />

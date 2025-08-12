@@ -45,13 +45,13 @@ function Layout({
   
   // Show loading while auth check happens
   if (!isLoaded || !userId) {
-    return <div className="h-screen flex items-center justify-center">Loading...</div>;
+    return <div className="h-screen flex items-center justify-center bg-background text-foreground">Loading...</div>;
   }
   
   return (
     <TotalUsageContext.Provider value={{ totalUsage, setTotalUsage }}>
       <UpdateCreditUsageContext.Provider value={{ updateCreditUsage, setUpdateCreditUsage }}>
-        <div className="flex flex-col h-screen overflow-hidden">
+        <div className="flex flex-col h-screen overflow-hidden bg-background">
           {/* Using shared header component with sidebar toggle */}
           <AppHeader 
             toggleSidebar={toggleSidebar}
@@ -64,7 +64,7 @@ function Layout({
             {/* Sidebar */}
             <aside 
               className={`
-                fixed lg:static h-full z-30 bg-white
+                fixed lg:static h-full z-30 bg-card border-r
                 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} 
                 transition-transform duration-300 ease-in-out
                 w-64 shadow-md
@@ -83,12 +83,12 @@ function Layout({
 
             {/* Main content */}
             <main className={`
-              flex-1 overflow-y-auto bg-gray-50
+              flex-1 overflow-y-auto bg-background
             `}>
               {/* Mobile sidebar toggle */}
               {isMobile && !isSidebarOpen && (
                 <button
-                  className="fixed bottom-4 right-4 z-40 bg-primary text-white p-3 rounded-full shadow-lg"
+                  className="fixed bottom-4 right-4 z-40 bg-primary text-primary-foreground p-3 rounded-full shadow-lg"
                   onClick={() => setIsSidebarOpen(true)}
                 >
                   <Menu className="h-5 w-5" />

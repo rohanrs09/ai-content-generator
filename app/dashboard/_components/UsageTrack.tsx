@@ -90,36 +90,36 @@ function UsageTrack() {
     <div className="w-full">
       <div className="flex justify-between items-center mb-2">
         <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-          plan === 'free' ? 'bg-gray-200 text-gray-700' : 
+          plan === 'free' ? 'bg-muted text-muted-foreground' : 
           plan === 'pro' ? 'bg-primary/20 text-primary' : 
-          'bg-yellow-100 text-yellow-800'
+          'bg-yellow-100 dark:bg-yellow-900/20 text-yellow-800 dark:text-yellow-200'
         }`}>
           {plan.charAt(0).toUpperCase() + plan.slice(1)} Plan
         </span>
         
-        <span className="text-xs text-gray-500">
+        <span className="text-xs text-muted-foreground">
           {Math.round(usagePercentage)}%
         </span>
       </div>
       
       {/* Progress bar */}
-      <div className="h-1.5 w-full bg-gray-200 rounded-full mb-2">
+      <div className="h-1.5 w-full bg-muted rounded-full mb-2">
         <div 
           className={`h-full rounded-full ${
-            usagePercentage > 90 ? 'bg-red-500' :
+            usagePercentage > 90 ? 'bg-destructive' :
             usagePercentage > 75 ? 'bg-yellow-500' : 'bg-primary'
           }`} 
           style={{ width: `${usagePercentage}%` }}
         ></div>
       </div>
       
-      <div className="flex justify-between text-xs text-gray-500 mb-3">
+      <div className="flex justify-between text-xs text-muted-foreground mb-3">
         <span>{totalUsage.toLocaleString()}</span>
         <span>{creditLimit.toLocaleString()} credits</span>
       </div>
       
       <Link href="/dashboard/billing">
-        <button className="w-full bg-primary hover:bg-primary/90 text-white py-1.5 px-3 rounded text-sm flex items-center justify-center gap-1.5 transition-colors">
+        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-1.5 px-3 rounded text-sm flex items-center justify-center gap-1.5 transition-colors">
           <Sparkles className="h-3.5 w-3.5" />
           {plan === 'free' ? 'Upgrade Plan' : 'Manage Plan'}
         </button>

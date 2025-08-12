@@ -131,16 +131,16 @@ const History = () => {
   if (!isLoaded || loading) {
     return (
       // This outer div covers the full viewport and centers its content
-      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-b from-white to-gray-50/80">
+      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-b from-background to-muted/80">
         {/* Box that contains the animation with explicit width for better centering */}
         <div className="flex flex-col items-center w-full max-w-xs px-6 text-center">
           {/* Animated logo wrapper */}
           <div className="relative w-24 h-24 mx-auto mb-6">
             {/* Pulsing background */}
-            <div className="absolute inset-0 rounded-full bg-violet-500/10 animate-pulse"></div>
+            <div className="absolute inset-0 rounded-full bg-primary/10 animate-pulse"></div>
   
             {/* Spinning inner circle */}
-            <div className="absolute inset-3 rounded-full border-2 border-violet-500/40 border-t-violet-600 animate-spin"></div>
+            <div className="absolute inset-3 rounded-full border-2 border-primary/40 border-t-primary animate-spin"></div>
   
             {/* Icon in center */}
             <div className="absolute inset-0 flex items-center justify-center">
@@ -148,7 +148,7 @@ const History = () => {
             </div>
           </div>
   
-          <h3 className="text-xl font-medium text-gray-800">
+          <h3 className="text-xl font-medium text-foreground">
             Loading your history
           </h3>
   
@@ -157,7 +157,7 @@ const History = () => {
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full bg-violet-500 animate-bounce"
+                className="w-2 h-2 rounded-full bg-primary animate-bounce"
                 style={{ animationDelay: `${i * 0.15}s` }}
               />
             ))}
@@ -168,10 +168,10 @@ const History = () => {
   }
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-12">
+    <div className="bg-muted min-h-screen pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
-        <div className="bg-white rounded-xl shadow-sm border mb-8 overflow-hidden">
+        <div className="bg-card rounded-xl shadow-sm border mb-8 overflow-hidden">
           <div className="bg-gradient-to-r from-violet-500 to-purple-500 p-6 text-white">
             <h2 className="font-bold text-3xl">Content History</h2>
             <p className="mt-2 opacity-90">
@@ -181,11 +181,11 @@ const History = () => {
 
           <div className="p-6 flex flex-col md:flex-row justify-between items-center gap-4 border-b">
             <div className="relative flex-1 w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <input
                 type="text"
                 placeholder="Search by content or template..."
-                className="pl-10 pr-4 py-2 w-full border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="pl-10 pr-4 py-2 w-full border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 bg-background text-foreground placeholder:text-muted-foreground"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -209,15 +209,15 @@ const History = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white rounded-xl p-12 text-center shadow-sm border"
+              className="bg-card rounded-xl p-12 text-center shadow-sm border"
             >
-              <div className="mx-auto bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mb-4">
-                <FileText className="h-10 w-10 text-gray-400" />
+              <div className="mx-auto bg-muted rounded-full w-20 h-20 flex items-center justify-center mb-4">
+                <FileText className="h-10 w-10 text-muted-foreground" />
               </div>
-              <h3 className="text-xl font-medium text-gray-800 mb-2">
+              <h3 className="text-xl font-medium text-foreground mb-2">
                 No content history found
               </h3>
-              <p className="text-gray-500 max-w-md mx-auto">
+              <p className="text-muted-foreground max-w-md mx-auto">
                 {searchTerm
                   ? "No results match your search criteria. Try a different search term."
                   : "Generate some content to see your history here."}
@@ -239,7 +239,7 @@ const History = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.05 }}
-                  className="bg-white rounded-xl shadow-sm border overflow-hidden"
+                  className="bg-card rounded-xl shadow-sm border overflow-hidden"
                 >
                   <div className="p-6 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
                     <div className="flex items-start gap-4 flex-1">
@@ -256,17 +256,17 @@ const History = () => {
                       )}
 
                       <div className="flex-1">
-                        <h3 className="font-medium text-lg text-gray-900">
+                        <h3 className="font-medium text-lg text-foreground">
                           {template?.name || "Unknown Template"}
                         </h3>
 
-                        <div className="flex flex-wrap gap-3 mt-2 text-sm text-gray-500">
+                        <div className="flex flex-wrap gap-3 mt-2 text-sm text-muted-foreground">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-3.5 w-3.5" />
                             {formatDate(item.createdAt)}
                           </div>
 
-                          <div className="flex items-center gap-1 bg-gray-100 px-2 py-0.5 rounded-full">
+                          <div className="flex items-center gap-1 bg-muted px-2 py-0.5 rounded-full">
                             <FileText className="h-3.5 w-3.5" />
                             {wordCount} words
                           </div>
@@ -305,7 +305,7 @@ const History = () => {
 
                   {isExpanded && (
                     <div className="border-t px-6 py-4">
-                      <div className="bg-gray-50 rounded-lg p-4 whitespace-pre-wrap text-gray-700">
+                      <div className="bg-muted rounded-lg p-4 whitespace-pre-wrap text-foreground">
                         {item.aiResponse || "No content available"}
                       </div>
                     </div>

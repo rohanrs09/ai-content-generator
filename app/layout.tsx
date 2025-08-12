@@ -3,6 +3,7 @@ import { Inter,Outfit } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { UsageProvider } from "./context/UsageContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import { Toaster } from "react-hot-toast";
 
 const inter = Outfit({ subsets: ["latin"] });
@@ -15,21 +16,23 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return ( 
-    <UsageProvider>
-  <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>{children}
-      <Toaster position="top-right" />
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ThemeProvider>
+          <UsageProvider>
+            <ClerkProvider>
+              {children}
+              <Toaster position="top-right" />
+            </ClerkProvider>
+          </UsageProvider>
+        </ThemeProvider>
       </body>
     </html>
-  </ClerkProvider>
-  </UsageProvider>
   );
 }

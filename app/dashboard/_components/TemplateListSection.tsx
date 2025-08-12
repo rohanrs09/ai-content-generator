@@ -97,7 +97,7 @@ function TemplateListSection({ userSearchInput }: { userSearchInput?: string }) 
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 bg-white rounded-xl border p-4 shadow-sm"
+          className="mb-8 bg-card rounded-xl border p-4 shadow-sm"
         >
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-3">
@@ -110,7 +110,7 @@ function TemplateListSection({ userSearchInput }: { userSearchInput?: string }) 
               
               <div className="flex flex-wrap gap-2 items-center">
                 {currentSearchText && (
-                  <span className="bg-gray-100 text-gray-800 text-xs px-3 py-1.5 rounded-full flex items-center gap-1">
+                  <span className="bg-muted text-foreground text-xs px-3 py-1.5 rounded-full flex items-center gap-1">
                     <Search className="h-3 w-3" />
                     {currentSearchText}
                   </span>
@@ -137,19 +137,19 @@ function TemplateListSection({ userSearchInput }: { userSearchInput?: string }) 
           </div>
           
           {/* Category breakdown */}
-          <div className="mt-4 border-t pt-3">
+          <div className="mt-4 border-t border-border pt-3">
             <div className="flex items-center gap-2 mb-2">
-              <ChevronDown className="h-3.5 w-3.5 text-gray-500" />
-              <span className="text-xs text-gray-600">Results by category:</span>
+              <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground">Results by category:</span>
             </div>
             
             <div className="flex flex-wrap gap-2">
               {Object.entries(categoryCounts).map(([category, count]) => (
                 <div 
                   key={category}
-                  className="text-xs bg-gray-50 text-gray-600 px-2 py-1 rounded-md flex items-center gap-1"
+                  className="text-xs bg-muted text-muted-foreground px-2 py-1 rounded-md flex items-center gap-1"
                 >
-                  {category} <span className="bg-gray-200 px-1.5 py-0.5 rounded-full">{count}</span>
+                  {category} <span className="bg-border px-1.5 py-0.5 rounded-full">{count}</span>
                 </div>
               ))}
             </div>
@@ -162,13 +162,13 @@ function TemplateListSection({ userSearchInput }: { userSearchInput?: string }) 
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl p-12 text-center shadow-sm border mt-8"
+          className="bg-card rounded-xl p-12 text-center shadow-sm border mt-8"
         >
-          <div className="mx-auto bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mb-4">
-            <Filter className="h-10 w-10 text-gray-400" />
+          <div className="mx-auto bg-muted rounded-full w-20 h-20 flex items-center justify-center mb-4">
+            <Filter className="h-10 w-10 text-muted-foreground" />
           </div>
-          <h3 className="text-xl font-medium text-gray-800 mb-2">No matching templates</h3>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <h3 className="text-xl font-medium text-foreground mb-2">No matching templates</h3>
+          <p className="text-muted-foreground max-w-md mx-auto">
             No templates match your current filters. Try different search terms or categories.
           </p>
           <Button 

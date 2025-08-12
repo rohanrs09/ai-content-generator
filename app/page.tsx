@@ -70,7 +70,7 @@ export default function Home() {
 
         {/* Hero Section - Enhanced */}
         <section className="relative z-10 overflow-hidden pt-24 pb-16">
-          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50/70 via-white to-white"></div>
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-50/70 via-background to-background dark:from-blue-950/20 dark:via-background dark:to-background"></div>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -110,7 +110,7 @@ export default function Home() {
               className="flex justify-center items-center"
             >
               <TypewriterEffectSmooth
-                className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white text-center"
+                className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-foreground md:text-5xl lg:text-6xl text-center"
                 words={words}
               />
             </motion.div>
@@ -119,7 +119,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-8 text-lg font-normal text-gray-600 lg:text-xl sm:px-16 xl:px-48"
+              className="mb-8 text-lg font-normal text-muted-foreground lg:text-xl sm:px-16 xl:px-48"
             >
               Boost your content creation with our AI Platform, providing
               engaging and top-quality text instantly.
@@ -150,7 +150,7 @@ export default function Home() {
             {/* Floating elements */}
             <div className="hidden md:block">
               <motion.div
-                className="absolute top-10 right-20 w-12 h-12 bg-blue-100 rounded-full"
+                className="absolute top-10 right-20 w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full"
                 animate={{ y: [0, -15, 0] }}
                 transition={{
                   repeat: Infinity,
@@ -159,7 +159,7 @@ export default function Home() {
                 }}
               />
               <motion.div
-                className="absolute bottom-20 left-20 w-8 h-8 bg-purple-100 rounded-full"
+                className="absolute bottom-20 left-20 w-8 h-8 bg-purple-100 dark:bg-purple-900/30 rounded-full"
                 animate={{ y: [0, -10, 0] }}
                 transition={{
                   repeat: Infinity,
@@ -169,7 +169,7 @@ export default function Home() {
                 }}
               />
               <motion.div
-                className="absolute top-32 left-40 w-6 h-6 bg-pink-100 rounded-full"
+                className="absolute top-32 left-40 w-6 h-6 bg-pink-100 dark:bg-pink-900/30 rounded-full"
                 animate={{ y: [0, -8, 0] }}
                 transition={{
                   repeat: Infinity,
@@ -183,14 +183,14 @@ export default function Home() {
         </section>
 
         {/* Demo Video Section - Premium Design */}
-        <section className="py-20 md:py-28 relative bg-gradient-to-b from-white to-gray-50/80">
+        <section className="py-20 md:py-28 relative bg-gradient-to-b from-background to-muted/20">
           {/* Grid background with proper z-index and opacity */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute inset-0 opacity-30">
               <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
               <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
             </div>
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.muted.foreground/0.1)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.muted.foreground/0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -243,7 +243,7 @@ export default function Home() {
                   </svg>
                 </span>
               </h2>
-              <p className="text-gray-600 max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto">
                 See how AI-Gen transforms your content creation workflow in
                 minutes with our powerful and intuitive platform.
               </p>
@@ -252,7 +252,7 @@ export default function Home() {
             {/* Video Showcase Card */}
             <div className="max-w-4xl mx-auto relative group">
               {/* Premium Card Design */}
-              <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border border-gray-100 transition-all duration-300 group-hover:shadow-2xl group-hover:border-primary/20 overflow-hidden">
+              <div className="bg-card rounded-2xl p-6 md:p-8 shadow-xl border border-border transition-all duration-300 group-hover:shadow-2xl group-hover:border-primary/20 overflow-hidden">
                 {/* Card Top Corner */}
                 <div className="absolute top-0 right-0">
                   <div className="bg-gradient-to-r from-primary to-purple-600 px-4 py-1 rounded-bl-lg text-white text-xs font-medium">
@@ -269,17 +269,17 @@ export default function Home() {
                 {/* Video Info */}
                 <div className="flex justify-between items-center">
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">
+                    <h3 className="text-xl font-bold text-foreground">
                       How AI-Gen Works
                     </h3>
-                    <p className="text-gray-600 text-sm mt-1">
+                    <p className="text-muted-foreground text-sm mt-1">
                       Learn how to use our platform in less than 4 minutes
                     </p>
                   </div>
 
                   <div className="flex items-center gap-4">
                     {/* Download Resources Button */}
-                    <button className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
+                    <button className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-muted hover:bg-muted/80 text-muted-foreground transition-colors">
                       <svg
                         className="w-4 h-4 mr-2"
                         viewBox="0 0 24 24"
@@ -333,7 +333,7 @@ export default function Home() {
         </section>
 
         {/* Content Challenges Section - Premium Design */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-white to-gray-50/80">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-background to-muted/20">
           {/* Decorative background elements */}
           {/* <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(40%_36%_at_50%_30%,rgba(99,102,241,0.08)_0%,transparent_60%)]"></div>
@@ -395,7 +395,7 @@ export default function Home() {
                   </svg>
                 </span>
               </h2>
-              <p className="text-gray-600 md:text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                 Our AI platform tackles your most complex content needs with
                 industry-specific templates and customizable outputs.
               </p>
@@ -581,7 +581,7 @@ export default function Home() {
                 },
               ].map((challenge, index) => (
                 <div key={index} className="group relative">
-                  <div className="h-full bg-white rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden border border-gray-100 group-hover:border-primary/20">
+                  <div className="h-full bg-card rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden border border-border group-hover:border-primary/20">
                     {/* Tag Badge in top corner */}
                     <div className={`absolute top-0 right-0`}>
                       <div
@@ -605,17 +605,17 @@ export default function Home() {
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">
+                    <h3 className="text-xl font-bold mb-2 text-foreground">
                       {challenge.title}
                     </h3>
-                    <p className="text-gray-600">{challenge.description}</p>
+                    <p className="text-muted-foreground">{challenge.description}</p>
 
                     {/* Stats with highlight effect */}
-                    <div className="flex items-center mt-5 pt-4 border-t border-gray-100">
+                    <div className="flex items-center mt-5 pt-4 border-t border-border">
                       <div
                         className={`w-8 h-1.5 rounded-full bg-gradient-to-r ${challenge.gradient} mr-2`}
                       ></div>
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-foreground">
                         {challenge.stats}
                       </span>
                     </div>
@@ -627,14 +627,14 @@ export default function Home() {
         </section>
 
         {/* How AI-Gen Works - Clean Modern Design */}
-        <section className="py-20 md:py-28 relative bg-gradient-to-b from-white to-gray-50/80">
+        <section className="py-20 md:py-28 relative bg-gradient-to-b from-background to-muted/20">
           {/* Subtle background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute inset-0 opacity-30">
               <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
               <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
             </div>
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.muted.foreground/0.1)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.muted.foreground/0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
@@ -687,7 +687,7 @@ export default function Home() {
                   </svg>
                 </span>
               </h2>
-              <p className="text-gray-600 max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto">
                 Transform your content creation workflow with our AI-powered
                 platform in three easy steps.
               </p>
@@ -852,13 +852,13 @@ export default function Home() {
                 <div key={index} className="relative group">
                   {/* Connection line (desktop only) */}
                   {index < 2 && (
-                    <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-gray-200 z-0"></div>
+                    <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-px bg-border z-0"></div>
                   )}
 
-                  <div className="bg-white rounded-2xl p-8 shadow-md border border-gray-100 h-full relative z-10 transition-all duration-300 hover:shadow-xl group-hover:-translate-y-1">
+                  <div className="bg-card rounded-2xl p-8 shadow-md border border-border h-full relative z-10 transition-all duration-300 hover:shadow-xl group-hover:-translate-y-1">
                     {/* Step number */}
                     <div className="absolute -top-3 -right-3">
-                      <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md">
+                      <div className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg shadow-md">
                         {step.number}
                       </div>
                     </div>
@@ -867,8 +867,8 @@ export default function Home() {
                     <div className="mb-6 text-primary">{step.icon}</div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                    <p className="text-gray-600">{step.description}</p>
+                    <h3 className="text-xl font-bold mb-3 text-foreground">{step.title}</h3>
+                    <p className="text-muted-foreground">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -971,15 +971,15 @@ export default function Home() {
               ].map((feature, index) => (
                 <div
                   key={index}
-                  className="flex flex-col items-center text-center bg-white p-6 rounded-xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md"
+                  className="flex flex-col items-center text-center bg-card p-6 rounded-xl border border-border shadow-sm transition-all duration-300 hover:shadow-md"
                 >
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4">
                     {feature.icon}
                   </div>
-                  <h4 className="text-lg font-semibold mb-1">
+                  <h4 className="text-lg font-semibold mb-1 text-foreground">
                     {feature.title}
                   </h4>
-                  <p className="text-gray-500 text-sm">{feature.description}</p>
+                  <p className="text-muted-foreground text-sm">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -987,7 +987,7 @@ export default function Home() {
         </section>
 
         {/* Templates Section - Premium Design */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-50/80 to-white">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-muted/20 to-background">
           {/* Decorative background elements */}
           {/* <div className="absolute inset-0 -z-10">
             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(40%_36%_at_50%_30%,rgba(99,102,241,0.08)_0%,transparent_60%)]"></div>
@@ -1049,7 +1049,7 @@ export default function Home() {
                   </svg>
                 </span>
               </h2>
-              <p className="text-gray-600 md:text-lg max-w-2xl mx-auto">
+              <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
                 Browse our extensive template library designed to help you
                 create any type of content with ease and efficiency.
               </p>
@@ -1222,7 +1222,7 @@ export default function Home() {
                 },
               ].map((template, index) => (
                 <div key={index} className="group relative">
-                  <div className="h-full bg-white rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden border border-gray-100 group-hover:border-primary/20">
+                  <div className="h-full bg-card rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden border border-border group-hover:border-primary/20">
                     {/* Tag Badge in top corner */}
                     <div className={`absolute top-0 right-0`}>
                       <div
@@ -1246,17 +1246,17 @@ export default function Home() {
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-bold mb-2 text-gray-900">
+                    <h3 className="text-xl font-bold mb-2 text-foreground">
                       {template.title}
                     </h3>
-                    <p className="text-gray-600">{template.description}</p>
+                    <p className="text-muted-foreground">{template.description}</p>
 
                     {/* Stats with highlight effect */}
-                    <div className="flex items-center mt-5 pt-4 border-t border-gray-100">
+                    <div className="flex items-center mt-5 pt-4 border-t border-border">
                       <div
                         className={`w-8 h-1.5 rounded-full bg-gradient-to-r ${template.gradient} mr-2`}
                       ></div>
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-foreground">
                         {template.stats}
                       </span>
                     </div>
@@ -1268,14 +1268,14 @@ export default function Home() {
         </section>
 
         {/* Testimonials - Enhanced with Grid Background */}
-        <section className="py-20 md:py-28 relative bg-gradient-to-b from-white to-gray-50/80">
+        <section className="py-20 md:py-28 relative bg-gradient-to-b from-background to-muted/20">
           {/* Grid background from How AI-Gen Works section */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute inset-0 opacity-30">
               <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
               <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
             </div>
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,theme(colors.muted.foreground/0.1)_1px,transparent_1px),linear-gradient(to_bottom,theme(colors.muted.foreground/0.1)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
           </div>
 
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -1328,7 +1328,7 @@ export default function Home() {
                   </svg>
                 </span>
               </h2>
-              <p className="text-gray-600 max-w-xl mx-auto">
+              <p className="text-muted-foreground max-w-xl mx-auto">
                 Discover why thousands of content creators trust AI-Gen for
                 their professional content needs.
               </p>
@@ -1372,7 +1372,7 @@ export default function Home() {
                 },
               ].map((testimonial, index) => (
                 <div key={index} className="group relative">
-                  <div className="h-full bg-white rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden border border-gray-100 group-hover:border-primary/20">
+                  <div className="h-full bg-card rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden border border-border group-hover:border-primary/20">
                     {/* Quote icon in top corner */}
                     <div className="absolute top-0 right-0">
                       <div
@@ -1389,16 +1389,16 @@ export default function Home() {
                     {/* Testimonial content */}
                     <div className="mb-6 pt-4">
                       {/* Quote marks */}
-                      <div className={`text-4xl font-serif text-gray-200 mb-2`}>
+                      <div className={`text-4xl font-serif text-muted/30 mb-2`}>
                         "
                       </div>
-                      <p className="text-gray-600 relative z-10">
+                      <p className="text-muted-foreground relative z-10">
                         "{testimonial.quote}"
                       </p>
                     </div>
 
                     {/* User info and rating */}
-                    <div className="flex items-center mt-5 pt-4 border-t border-gray-100">
+                    <div className="flex items-center mt-5 pt-4 border-t border-border">
                       {/* Avatar */}
                       <div
                         className={`w-10 h-10 rounded-full flex items-center justify-center bg-gradient-to-br ${testimonial.gradient} text-white mr-3 flex-shrink-0`}
@@ -1410,10 +1410,10 @@ export default function Home() {
 
                       {/* Name and role */}
                       <div className="flex-1">
-                        <h4 className="font-bold text-gray-900">
+                        <h4 className="font-bold text-foreground">
                           {testimonial.name}
                         </h4>
-                        <p className="text-xs text-gray-600">
+                        <p className="text-xs text-muted-foreground">
                           {testimonial.role}, {testimonial.company}
                         </p>
                       </div>
@@ -1426,12 +1426,12 @@ export default function Home() {
                             className={`w-4 h-4 ${
                               i < testimonial.rating
                                 ? "text-yellow-400"
-                                : "text-gray-300"
+                                : "text-muted/30"
                             }`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8-2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
@@ -1445,23 +1445,23 @@ export default function Home() {
             </div>
 
             {/* Trust indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-16 text-gray-400">
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-16 text-muted-foreground">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-gray-700">
+                <div className="text-2xl md:text-3xl font-bold text-foreground">
                   1k+
                 </div>
                 <div className="text-sm mt-1">Active Users</div>
               </div>
-              <div className="h-8 w-px bg-gray-200 hidden md:block"></div>
+              <div className="h-8 w-px bg-border hidden md:block"></div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-gray-700">
+                <div className="text-2xl md:text-3xl font-bold text-foreground">
                   4.9/5
                 </div>
                 <div className="text-sm mt-1">Average Rating</div>
               </div>
-              <div className="h-8 w-px bg-gray-200 hidden md:block"></div>
+              <div className="h-8 w-px bg-border hidden md:block"></div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-gray-700">
+                <div className="text-2xl md:text-3xl font-bold text-foreground">
                   99%
                 </div>
                 <div className="text-sm mt-1">Satisfaction</div>
@@ -1471,7 +1471,7 @@ export default function Home() {
         </section>
 
         {/* Final Last Section - Streamlined Design */}
-        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-50/80 to-white">
+        <section className="py-24 relative overflow-hidden bg-gradient-to-b from-muted/20 to-background">
           {/* Simple background with blur effects - grid removed */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div className="absolute inset-0 opacity-30">
@@ -1493,7 +1493,7 @@ export default function Home() {
                     Transform Your Content Creation
                   </span>
                 </h2>
-                <p className="text-gray-600 text-lg mb-8 max-w-xl">
+                <p className="text-muted-foreground text-lg mb-8 max-w-xl">
                   Join thousands of content creators, marketers, and businesses
                   who have revolutionized their workflow with AI-Gen.
                 </p>
@@ -1524,9 +1524,9 @@ export default function Home() {
                           </svg>
                         </div>
                       </div>
-                      <p className="text-gray-700 group-hover:text-gray-900 transition-colors">
-                        {feature}
-                      </p>
+                                        <p className="text-muted-foreground group-hover:text-foreground transition-colors">
+                    {feature}
+                  </p>
                     </div>
                   ))}
                 </div>
@@ -1541,7 +1541,7 @@ export default function Home() {
                 </div>
 
                 {/* Direct email contact */}
-                <div className="mt-8 flex items-center text-gray-600">
+                <div className="mt-8 flex items-center text-muted-foreground">
                   <svg
                     className="w-5 h-5 mr-2"
                     viewBox="0 0 24 24"
@@ -1578,11 +1578,11 @@ export default function Home() {
               </div>
 
               {/* Right column - Newsletter signup with working email functionality */}
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                <h3 className="text-2xl font-bold mb-2">
+              <div className="bg-card p-8 rounded-2xl shadow-xl border border-border">
+                <h3 className="text-2xl font-bold mb-2 text-foreground">
                   Join Our AI Content Community
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-muted-foreground mb-6">
                   Get AI content tips, exclusive templates, and early access to
                   new features.
                 </p>
@@ -1686,7 +1686,7 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-foreground mb-1"
                     >
                       Email Address <span className="text-red-500">*</span>
                     </label>
@@ -1695,7 +1695,7 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all bg-background text-foreground"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -1703,14 +1703,14 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                   <div>
                     <label
                       htmlFor="interests"
-                      className="block text-sm font-medium text-gray-700 mb-1"
+                      className="block text-sm font-medium text-foreground mb-1"
                     >
                       What content do you create most?
                     </label>
                     <select
                       id="interests"
                       name="interests"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all bg-white"
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all bg-background text-foreground"
                     >
                       <option value="">Select your primary content</option>
                       <option value="blog">Blog Articles & Long Form</option>
@@ -1728,11 +1728,11 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                         id="updates"
                         name="updates"
                         type="checkbox"
-                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary/50"
+                        className="w-4 h-4 border border-border rounded bg-background focus:ring-3 focus:ring-primary/50"
                       />
                     </div>
                     <div className="ml-3 text-sm">
-                      <label htmlFor="updates" className="text-gray-600">
+                      <label htmlFor="updates" className="text-muted-foreground">
                         Send me AI content tips and product updates (no more
                         than once a week)
                       </label>
@@ -1790,7 +1790,7 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
                     </button>
                   </div>
 
-                  <p className="text-xs text-gray-500 mt-4">
+                  <p className="text-xs text-muted-foreground mt-4">
                     We respect your privacy. You can unsubscribe at any time.
                   </p>
                 </form>
@@ -1798,8 +1798,8 @@ Wants updates: ${wantsUpdates ? "Yes" : "No"}
             </div>
 
             {/* Simple copyright */}
-            <div className="mt-16 pt-8 border-t border-gray-200 text-center">
-              <p className="text-gray-500 text-sm">
+            <div className="mt-16 pt-8 border-t border-border text-center">
+              <p className="text-muted-foreground text-sm">
                 © {new Date().getFullYear()} AI-Gen. All rights reserved.
               </p>
             </div>

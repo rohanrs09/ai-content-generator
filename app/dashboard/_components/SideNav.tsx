@@ -47,7 +47,7 @@ function SideNav() {
   };
   
   return (
-    <div className="h-full bg-white flex flex-col">
+    <div className="h-full bg-card flex flex-col">
       {/* Main navigation menu */}
       <nav className="flex-1 overflow-y-auto py-3">
         <div className="space-y-1 px-3">
@@ -56,8 +56,8 @@ function SideNav() {
               key={index}
               className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 text-left
                 ${path === menu.path 
-                  ? 'bg-primary text-white shadow-sm' 
-                  : 'text-gray-700 hover:bg-gray-100'
+                  ? 'bg-primary text-primary-foreground shadow-sm' 
+                  : 'text-foreground hover:bg-accent'
                 }`}
               onClick={() => handleNavigation(menu.path)}
             >
@@ -69,7 +69,7 @@ function SideNav() {
       </nav>
       
       {/* Usage tracker at bottom */}
-      <div className="p-4 border-t">
+      <div className="p-4 border-t border-border">
         <UsageTrack />
       </div>
       
@@ -77,7 +77,7 @@ function SideNav() {
       <div className="p-4 pt-0">
         <Button 
           variant="outline" 
-          className="w-full flex items-center gap-3 text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200"
+          className="w-full flex items-center gap-3 text-destructive hover:text-destructive hover:bg-destructive/10 border-destructive/20"
           onClick={handleLogout}
         >
           <LogOut className="h-5 w-5 flex-shrink-0" />

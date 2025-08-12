@@ -5,7 +5,7 @@ import Image from "next/image";
 
 function Header() {
   return (
-    <div className="p-3 px-5 flex justify-between shadow-md ">
+    <div className="p-3 px-5 flex justify-between shadow-md bg-background border-b">
       <div className="flex justify-center">
         <div className="flex justify-center  animate-spin-slow ">
           <Link href="/dashboard">

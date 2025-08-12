@@ -41,9 +41,9 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
   };
 
   return (
-    <div className="bg-white shadow-lg border rounded-xl overflow-hidden">
+    <div className="bg-card shadow-lg border border-border rounded-xl overflow-hidden">
       {/* Gradient Header - Fixed grid background */}
-      <div className="bg-gradient-to-r from-indigo-500/90 via-purple-500/90 to-pink-500/90 p-6 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-primary/90 via-purple-500/90 to-pink-500/90 p-6 relative overflow-hidden">
         {/* Grid pattern with CSS background instead of utility class */}
         <div 
           className="absolute inset-0 opacity-10" 
@@ -56,7 +56,7 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
         
         <div className="relative flex items-center gap-4 z-10">
           {selectedTemplate?.icon && (
-            <div className="bg-white/90 p-3 rounded-xl shadow-lg">
+            <div className="bg-background/90 p-3 rounded-xl shadow-lg">
               <img 
                 src={selectedTemplate.icon} 
                 alt={selectedTemplate.name} 
@@ -66,10 +66,10 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
           )}
           
           <div>
-            <h2 className="font-bold text-xl text-white">
+            <h2 className="font-bold text-xl text-primary-foreground">
               {selectedTemplate?.name || "Template"}
             </h2>
-            <p className="text-sm text-white/80 mt-1 max-w-md">
+            <p className="text-sm text-primary-foreground/80 mt-1 max-w-md">
               {selectedTemplate?.desc || "Generate AI content"}
             </p>
           </div>
@@ -95,14 +95,14 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
               {/* Label with animated underline on focus */}
               <label className={cn(
                 "text-sm font-medium flex items-center gap-1.5 pb-1.5",
-                focusedField === item.name ? "text-primary" : "text-gray-700"
+                focusedField === item.name ? "text-primary" : "text-foreground"
               )}>
                 {completedFields.includes(item.name) && (
                   <CheckCircle2 className="h-4 w-4 text-green-500" />
                 )}
                 {item.label} 
                 {item.required && (
-                  <span className="text-red-500 ml-0.5">*</span>
+                  <span className="text-destructive ml-0.5">*</span>
                 )}
               </label>
               
@@ -116,11 +116,11 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
                     required={item?.required}
                     placeholder={`Enter ${item.name}`}
                     className={cn(
-                      "transition-all border-gray-200 rounded-lg py-2.5 px-4",
+                      "transition-all border-border rounded-lg py-2.5 px-4",
                       "focus:border-primary focus:ring-2 focus:ring-primary/20",
-                      "hover:border-gray-300",
+                      "hover:border-primary/30",
                       focusedField === item.name && "border-primary/50 ring-2 ring-primary/20",
-                      completedFields.includes(item.name) && "bg-green-50/30"
+                      completedFields.includes(item.name) && "bg-green-50/30 dark:bg-green-900/20"
                     )}
                     disabled={loading}
                     onFocus={() => setFocusedField(item.name)}
@@ -145,11 +145,11 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
                     required={item?.required}
                     placeholder={`Enter your ${item.name} details here...`}
                     className={cn(
-                      "min-h-[140px] transition-all border-gray-200 rounded-lg py-3 px-4",
+                      "min-h-[140px] transition-all border-border rounded-lg py-3 px-4",
                       "focus:border-primary focus:ring-2 focus:ring-primary/20",
-                      "hover:border-gray-300 resize-y",
+                      "hover:border-primary/30 resize-y",
                       focusedField === item.name && "border-primary/50 ring-2 ring-primary/20",
-                      completedFields.includes(item.name) && "bg-green-50/30"
+                      completedFields.includes(item.name) && "bg-green-50/30 dark:bg-green-900/20"
                     )}
                     disabled={loading}
                     onFocus={() => setFocusedField(item.name)}
@@ -169,7 +169,7 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
               
               {/* Field description hint */}
               {item.name && (
-                <p className="text-xs text-gray-500 mt-1.5 ml-1">
+                <p className="text-xs text-muted-foreground mt-1.5 ml-1">
                   {item.field === "textarea" 
                     ? "Provide enough details for better AI results"
                     : `Enter ${item.name} to customize your AI output`}
@@ -188,7 +188,7 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
           {/* Animated Submit Button */}
           <Button 
             type="submit" 
-            className="w-full group flex items-center justify-center gap-2 py-6 relative overflow-hidden bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500" 
+            className="w-full group flex items-center justify-center gap-2 py-6 relative overflow-hidden bg-gradient-to-r from-primary to-violet-600 hover:from-primary/90 hover:to-violet-500" 
             disabled={loading}
           >
             {/* Fixed radial gradient */}
@@ -219,9 +219,9 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
               animate={{ opacity: 1, y: 0 }}
               className="flex items-center justify-center gap-2 mt-3"
             >
-              <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                  className="h-full bg-gradient-to-r from-primary to-violet-500"
                   initial={{ width: "5%" }}
                   animate={{ 
                     width: "95%", 
@@ -229,7 +229,7 @@ function FormSection({ selectedTemplate, onSubmit, loading }: FormProps) {
                   }}
                 />
               </div>
-              <span className="text-xs text-gray-500 min-w-[80px] text-center">
+              <span className="text-xs text-muted-foreground min-w-[80px] text-center">
                 Processing...
               </span>
             </motion.div>
